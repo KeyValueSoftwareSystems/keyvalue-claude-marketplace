@@ -21,6 +21,24 @@ A 4-stage market research pipeline for D2C founders and startups.
 
 **Research modes:** Competitor | PMF | Comprehensive
 
+---
+
+### Marketing Intelligence Agent
+
+**Version:** 1.0.0
+
+A marketing intelligence agent for Meta Ads performance reporting.
+
+**What it does:**
+- Pulls live campaign data from Meta Ads MCP and generates daily or weekly performance reports
+- Posts summaries to Slack and optionally WhatsApp
+- Renders an interactive performance dashboard as a standalone HTML file
+- Walks through full MCP and configuration setup on first use
+
+**Commands:** `run daily report` | `run weekly report` | `show dashboard` | `setup`
+
+**Requirements:** Meta Ads MCP, Slack MCP (WhatsApp optional)
+
 ## Installation
 
 ### Via Claude.ai Marketplace (Recommended)

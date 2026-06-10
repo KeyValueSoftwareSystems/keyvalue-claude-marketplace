@@ -11,6 +11,12 @@
       "source": "./skills/market-research-analyst",
       "description": "Market research pipeline for D2C founders and startups. Runs structured competitor analysis, PMF analysis, or comprehensive research.",
       "version": "1.0.0"
+    },
+    {
+      "name": "marketing-intelligence-agent",
+      "source": "./skills/marketing-intelligence-agent",
+      "description": "Marketing intelligence agent for Meta Ads. Pulls live campaign data, generates insights, and posts to Slack and optionally WhatsApp.",
+      "version": "1.0.0"
     }
   ]
 }
