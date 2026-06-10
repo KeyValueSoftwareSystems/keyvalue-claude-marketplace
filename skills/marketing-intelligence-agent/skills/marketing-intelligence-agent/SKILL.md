@@ -55,7 +55,7 @@ If "Good CPL target" and "Flag CPL above" are blank in context.md, derive them f
 **Requirements:**
 - Meta Ads MCP connected → Claude Desktop → Settings → Connectors → + → Add custom connector → Name: `Meta mcp` · URL: `https://mcp.facebook.com/ads`
 - Slack MCP connected → Claude Desktop → Settings → Connectors → Slack → Connect
-- WhatsApp (optional) → see Advanced setup in SETUP.pdf
+- WhatsApp (optional) → see the Advanced WhatsApp Setup section below in this skill
 
 **Keeping the skill up to date:**
 This skill is maintained at the KeyValue Claude Marketplace. To get the latest version:
@@ -354,3 +354,40 @@ Save the completed HTML as `dashboard.html` and present it as a downloadable fil
 5. **Every insight must have a number and an action.** Vague observations are not insights.
 6. **Read context.md first** — it has the business name, currency, benchmarks, Slack channel, and optional WhatsApp number.
 7. The daily report should complete in under 60 seconds.
+
+---
+
+## Advanced: WhatsApp Setup (Mac only)
+
+WhatsApp requires a local bridge running on your Mac. This is optional — reports will still go to Slack without it.
+
+**Prerequisites:** Mac, Homebrew, personal WhatsApp on your phone.
+
+**Step 1 — Install:**
+```
+brew install python go uv
+git clone https://github.com/verygoodplugins/whatsapp-mcp.git ~/whatsapp-mc
+cd ~/whatsapp-mc/whatsapp-mcp-server && uv sync
+cd ~/whatsapp-mc/whatsapp-bridge && go build -o whatsapp-bridge .
+```
+
+**Step 2 — Add to Claude Desktop config:**
+Open `~/Library/Application Support/Claude/claude_desktop_config.json` and add inside `mcpServers`:
+```json
+"whatsapp": {
+  "command": "uv",
+  "args": ["--directory", "/Users/YOURUSERNAME/whatsapp-mc/whatsapp-mcp-server", "run", "main.py"]
+}
+```
+Replace `YOURUSERNAME` with your Mac username (`whoami` in Terminal).
+
+**Step 3 — Link your WhatsApp (run every time you want WhatsApp sending):**
+```
+cd ~/whatsapp-mc/whatsapp-bridge && go run .
+```
+Scan the QR code: WhatsApp → Settings → Linked Devices → Link a Device.
+Keep this Terminal window open.
+
+**Troubleshooting:**
+- Client outdated error: `cd ~/whatsapp-mc && git pull` then run `go run .` again
+- Bridge stopped: run `go run .` again
