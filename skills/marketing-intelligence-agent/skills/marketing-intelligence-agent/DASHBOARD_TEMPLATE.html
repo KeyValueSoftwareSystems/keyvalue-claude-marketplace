@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>%%ACCOUNT_NAME%% · Meta Ads Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0E12; --card: #14171E; --card2: #1A1E27; --border: #232830;
+    --text: #E8ECF1; --muted: #6B7589; --accent: #3ECF8E; --accent2: #F97316;
+    --danger: #EF4444; --blue: #3B82F6; --purple: #A855F7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+  .header { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .badge { display: inline-block; background: var(--accent); color: #000; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab { padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+  .tab.active { background: var(--accent); color: #000; }
+  .tab:not(.active) { background: var(--card); color: var(--muted); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .kpi-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .kpi-card { background: var(--card); border-radius: 14px; padding: 20px 22px; flex: 1; min-width: 160px; border: 1px solid var(--border); }
+  .kpi-label { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .kpi-value { font-size: 28px; font-weight: 800; line-height: 1.1; }
+  .kpi-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .card { background: var(--card); border-radius: 14px; padding: 20px; border: 1px solid var(--border); }
+  .card-title { font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 16px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .bar-label { width: 140px; font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--border); border-radius: 4px; height: 24px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .bar-value { font-size: 12px; font-weight: 700; color: var(--text); min-width: 70px; text-align: right; font-family: 'JetBrains Mono', monospace; }
+  .filter-row { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer; font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .filter-btn.active { background: var(--accent); color: #000; }
+  .filter-btn:not(.active) { background: var(--card2); color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { padding: 10px 12px; text-align: right; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; user-select: none; }
+  th:first-child { text-align: left; }
+  tr { border-bottom: 1px solid var(--border); }
+  td { padding: 10px 12px; text-align: right; }
+  td:first-child { text-align: left; }
+  .status-badge { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .status-active { background: rgba(62,207,142,0.15); color: var(--accent); }
+  .status-paused { background: rgba(107,117,137,0.15); color: var(--muted); }
+  .funnel-step { display: flex; align-items: center; gap: 16px; }
+  .funnel-label { width: 220px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
+  .funnel-track { flex: 1; background: var(--border); border-radius: 8px; height: 36px; overflow: hidden; }
+  .funnel-fill { height: 100%; border-radius: 8px; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; transition: width 0.8s ease; min-width: 60px; }
+  .funnel-fill span { font-size: 13px; font-weight: 800; color: #fff; font-family: 'JetBrains Mono', monospace; }
+  .dropoff { display: flex; align-items: center; padding: 6px 0 6px 10px; gap: 8px; }
+  .dropoff-pct { font-size: 11px; color: var(--danger); font-weight: 600; }
+  .dropoff-abs { font-size: 11px; color: var(--muted); }
+  .insight-card { border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+  .insight-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .insight-icon { font-size: 20px; }
+  .insight-title { font-size: 15px; font-weight: 700; flex: 1; }
+  .insight-badge { padding: 2px 10px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .insight-high { background: var(--card); border: 1px solid rgba(239,68,68,0.3); border-left: 4px solid var(--danger); }
+  .insight-medium { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--blue); }
+  .insight-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .badge-high { background: rgba(239,68,68,0.15); color: var(--danger); }
+  .badge-medium { background: rgba(59,130,246,0.15); color: var(--blue); }
+  .list-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .list-row:last-child { border-bottom: none; }
+  .footer { text-align: center; margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+  .campaign-name { font-weight: 500; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .campaign-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <span style="font-size:28px">📊</span>
+    <h1>%%ACCOUNT_NAME%% Marketing Intelligence <span class="badge">LIVE DATA</span></h1>
+  </div>
+  <p class="subtitle">Last 30 days · %%DATE_RANGE%% · Meta Ads</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab(0)">Overview</button>
+    <button class="tab" onclick="showTab(1)">Campaigns</button>
+    <button class="tab" onclick="showTab(2)">Funnel</button>
+    <button class="tab" onclick="showTab(3)">AI Insights</button>
+  </div>
+
+  <!-- OVERVIEW TAB -->
+  <div id="tab0" class="tab-content active">
+    <div class="kpi-row" id="kpiRow"></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-title">Spend by Vertical</div><div id="spendChart"></div></div>
+      <div class="card"><div class="card-title">Leads by Vertical</div><div id="leadsChart"></div></div>
+    </div>
+    <div class="card"><div class="card-title">CPL by Vertical</div><div id="cplChart"></div></div>
+  </div>
+
+  <!-- CAMPAIGNS TAB -->
+  <div id="tab1" class="tab-content">
+    <div class="filter-row" id="filterRow"></div>
+    <div class="card" style="padding:0; overflow:auto;">
+      <table id="campaignTable">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:10px 12px;" onclick="sortTable('name')">Campaign</th>
+            <th style="text-align:center;">Status</th>
+            <th onclick="sortTable('spend')">Spend ↕</th>
+            <th onclick="sortTable('leads')">Leads ↕</th>
+            <th onclick="sortTable('cpl')">CPL ↕</th>
+            <th onclick="sortTable('ctr')">CTR ↕</th>
+            <th onclick="sortTable('cpc')">CPC ↕</th>
+          </tr>
+        </thead>
+        <tbody id="campaignBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FUNNEL TAB -->
+  <div id="tab2" class="tab-content">
+    <div class="card" style="margin-bottom:20px;">
+      <h3 style="font-size:16px; font-weight:700; margin-bottom:4px;">Acquisition Funnel</h3>
+      <p style="font-size:12px; color:var(--muted); margin-bottom:20px;">From ad impression to converted customer — last 30 days</p>
+      <div id="funnelSteps"></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><div class="card-title">Conversion Rate by Vertical</div><div id="conversionRates"></div></div>
+      <div class="card"><div class="card-title">CPL by Geography</div><div id="geoChart"></div></div>
+    </div>
+  </div>
+
+  <!-- AI INSIGHTS TAB -->
+  <div id="tab3" class="tab-content">
+    <div id="insightsContainer"></div>
+  </div>
+
+  <div class="footer">Powered by Claude + Meta Ads MCP · Live data · %%ACCOUNT_NAME%%</div>
+</div>
+
+<script>
+// %%CAMPAIGNS_DATA%%
+
+// %%INSIGHTS_DATA%%
+
+const CURRENCY = "%%CURRENCY%%";
+const fmt = n => CURRENCY + Math.round(n).toLocaleString("en-IN");
+const fmtK = n => n >= 100000 ? (n/100000).toFixed(1)+"L" : n >= 1000 ? (n/1000).toFixed(1)+"K" : n.toString();
+const pct = n => n.toFixed(1)+"%";
+
+const totals = CAMPAIGNS.reduce((a,c) => ({
+  spend: a.spend+c.spend, leads: a.leads+c.leads, impressions: a.impressions+c.impressions,
+  clicks: a.clicks+c.clicks, conversions: a.conversions+(c.conversions||0)
+}), {spend:0,leads:0,impressions:0,clicks:0,conversions:0});
+const avgCpl = totals.spend / totals.leads;
+
+const vertMap = {};
+CAMPAIGNS.forEach(c => {
+  if (!vertMap[c.vertical]) vertMap[c.vertical] = {vertical:c.vertical,spend:0,leads:0,conversions:0};
+  vertMap[c.vertical].spend += c.spend;
+  vertMap[c.vertical].leads += c.leads;
+  vertMap[c.vertical].conversions += c.conversions;
+});
+const vertData = Object.values(vertMap).map(v => ({...v, cpl: v.leads>0 ? v.spend/v.leads : 0})).sort((a,b)=>b.spend-a.spend);
+
+const geoMap = {};
+CAMPAIGNS.forEach(c => {
+  if (!geoMap[c.geo]) geoMap[c.geo] = {geo:c.geo,spend:0,leads:0};
+  geoMap[c.geo].spend += c.spend;
+  geoMap[c.geo].leads += c.leads;
+});
+const geoData = Object.values(geoMap).map(v=>({...v,cpl:v.leads>0?v.spend/v.leads:0})).sort((a,b)=>b.leads-a.leads);
+
+// KPI Cards
+const hasConversions = CAMPAIGNS.some(c => c.conversions !== null && c.conversions !== undefined);
+document.getElementById('kpiRow').innerHTML = `
+  <div class="kpi-card"><div class="kpi-label">Total Spend</div><div class="kpi-value mono">${fmtK(totals.spend)}</div><div class="kpi-sub">Last 30 days · Meta Ads</div></div>
+  <div class="kpi-card"><div class="kpi-label">Total Leads</div><div class="kpi-value mono" style="color:var(--accent)">${totals.leads.toLocaleString()}</div><div class="kpi-sub">${CAMPAIGNS.filter(c=>c.status==='ACTIVE').length} active campaigns</div></div>
+  <div class="kpi-card"><div class="kpi-label">Blended CPL</div><div class="kpi-value mono">${fmt(avgCpl)}</div><div class="kpi-sub">Account average</div></div>
+  ${hasConversions ? `<div class="kpi-card"><div class="kpi-label">Converted</div><div class="kpi-value mono" style="color:var(--accent2)">${totals.conversions}</div><div class="kpi-sub">${((totals.conversions/totals.leads)*100).toFixed(1)}% of leads</div></div>` : ''}
+`;
+
+function makeBarChart(container, data, valueKey, labelKey, colorFn, formatFn) {
+  const max = Math.max(...data.map(d=>d[valueKey]));
+  container.innerHTML = data.map(d => `
+    <div class="bar-row">
+      <div class="bar-label">${d[labelKey]}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max((d[valueKey]/max)*100,2)}%;background:${colorFn(d)}"></div></div>
+      <div class="bar-value">${formatFn(d[valueKey])}</div>
+    </div>`).join('');
+}
+
+makeBarChart(document.getElementById('spendChart'), vertData, 'spend', 'vertical', ()=>'#3B82F6', fmt);
+makeBarChart(document.getElementById('leadsChart'), vertData, 'leads', 'vertical', ()=>'#3ECF8E', v=>v.toString());
+makeBarChart(document.getElementById('cplChart'), [...vertData].filter(v=>v.cpl>0).sort((a,b)=>a.cpl-b.cpl), 'cpl', 'vertical', d=>d.cpl<avgCpl?'#3ECF8E':'#EF4444', fmt);
+
+const verticals = ['All', ...new Set(CAMPAIGNS.map(c=>c.vertical))];
+let activeFilter = 'All', sortKey = 'spend', sortDir = -1;
+
+function renderFilters() {
+  document.getElementById('filterRow').innerHTML = verticals.map(v =>
+    `<button class="filter-btn ${v===activeFilter?'active':''}" onclick="setFilter('${v}')">${v}</button>`).join('');
+}
+
+function setFilter(v) { activeFilter = v; renderFilters(); renderTable(); }
+
+function sortTable(key) {
+  if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; }
+  renderTable();
+}
+
+function renderTable() {
+  let data = activeFilter === 'All' ? [...CAMPAIGNS] : CAMPAIGNS.filter(c=>c.vertical===activeFilter);
+  data.sort((a,b) => (a[sortKey]>b[sortKey]?1:-1)*sortDir*-1);
+  document.getElementById('campaignBody').innerHTML = data.map(c => `
+    <tr>
+      <td><div class="campaign-name">${c.name}</div><div class="campaign-sub">${c.vertical} · ${c.geo}</div></td>
+      <td style="text-align:center"><span class="status-badge ${c.status==='ACTIVE'?'status-active':'status-paused'}">${c.status}</span></td>
+      <td class="mono" style="font-size:12px">${fmt(c.spend)}</td>
+      <td class="mono" style="font-size:12px;font-weight:700;color:var(--accent)">${c.leads}</td>
+      <td class="mono" style="font-size:12px;color:${c.cpl<avgCpl?'var(--accent)':c.cpl>avgCpl*2?'var(--danger)':'var(--text)'}">${fmt(c.cpl)}</td>
+      <td class="mono" style="font-size:12px">${pct(c.ctr)}</td>
+      <td class="mono" style="font-size:12px">${fmt(c.cpc)}</td>
+    </tr>`).join('');
+}
+
+renderFilters();
+renderTable();
+
+const funnelSteps = [
+  {label:"Impressions", value:totals.impressions, color:"#3B82F6"},
+  {label:"Clicks", value:totals.clicks, color:"#A855F7"},
+  {label:"Form Submissions", value:totals.leads, color:"#3ECF8E"},
+  ...(hasConversions ? [{label:"Converted", value:totals.conversions, color:"#EC4899"}] : []),
+];
+
+const funnelContainer = document.getElementById('funnelSteps');
+funnelSteps.forEach((step, i) => {
+  const widthPct = (step.value / funnelSteps[0].value) * 100;
+  if (i > 0) {
+    const dropOff = ((1 - step.value / funnelSteps[i-1].value) * 100).toFixed(1);
+    funnelContainer.innerHTML += `<div class="dropoff"><span style="color:var(--muted);font-size:16px">↓</span><span class="dropoff-pct">${dropOff}% drop-off</span><span class="dropoff-abs">(${funnelSteps[i-1].value.toLocaleString()} → ${step.value.toLocaleString()})</span></div>`;
+  }
+  funnelContainer.innerHTML += `<div class="funnel-step"><div class="funnel-label">${step.label}</div><div class="funnel-track"><div class="funnel-fill" style="width:${Math.max(widthPct,2)}%;background:${step.color}"><span>${step.value.toLocaleString()}</span></div></div></div>`;
+});
+
+document.getElementById('conversionRates').innerHTML = vertData.filter(v=>v.leads>0).map(v => {
+  const rate = ((v.conversions/v.leads)*100).toFixed(1);
+  return `<div class="list-row"><span style="font-size:13px">${v.vertical}</span><span class="mono" style="font-size:13px;font-weight:700;color:${parseFloat(rate)>15?'var(--accent)':'var(--text)'}">${rate}%</span></div>`;
+}).join('');
+
+document.getElementById('geoChart').innerHTML = [...geoData].filter(g=>g.cpl>0).sort((a,b)=>a.cpl-b.cpl).map(g =>
+  `<div class="list-row"><span style="font-size:13px">${g.geo}</span><span class="mono" style="font-size:13px;font-weight:700;color:${g.cpl<avgCpl?'var(--accent)':g.cpl>avgCpl*1.5?'var(--danger)':'var(--text)'}">${fmt(g.cpl)}</span></div>`).join('');
+
+document.getElementById('insightsContainer').innerHTML = INSIGHTS.map(ins => `
+  <div class="insight-card ${ins.priority==='High'?'insight-high':'insight-medium'}">
+    <div class="insight-header">
+      <span class="insight-icon">${ins.icon}</span>
+      <span class="insight-title">${ins.title}</span>
+      <span class="insight-badge ${ins.priority==='High'?'badge-high':'badge-medium'}">${ins.priority}</span>
+    </div>
+    <p class="insight-body">${ins.body}</p>
+  </div>`).join('');
+
+function showTab(index) {
+  document.querySelectorAll('.tab-content').forEach((t,i) => t.classList.toggle('active', i===index));
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===index));
+}
+</script>
+</body>
+</html>

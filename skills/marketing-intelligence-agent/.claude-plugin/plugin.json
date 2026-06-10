@@ -1,0 +1,5 @@
+{
+  "name": "marketing-intelligence-agent",
+  "description": "Marketing intelligence agent for Meta Ads. Pulls live campaign data, generates AI insights, and sends daily and weekly summaries to Slack and WhatsApp. Renders an interactive HTML dashboard on demand. Runs autonomously via Cowork or Claude Code Routines.",
+  "version": "1.0.0"
+}
