@@ -24,8 +24,8 @@ If "Good CPL target" and "Flag CPL above" are blank in context.md, derive them f
 Execute these steps in order. Do not stop to ask questions.
 
 ### Step 1 — Pull Data
-Call Meta Ads MCP. Get campaign-level data for the last 7 days with these fields:
-`name, status, amount_spent, impressions, clicks, ctr, cpc, results, cost_per_result, created_time, start_time`
+Call Meta Ads MCP. Get **campaign-level** data (not ad-level, not adset-level — campaigns only) for the last 7 days with these fields:
+`name, status, amount_spent, impressions, clicks, ctr, cpc, results, cost_per_result, created_time, start_time, actions`
 
 Filter to campaigns with non-zero spend. Sort by cost_per_result ascending.
 
@@ -45,7 +45,7 @@ Example: "Campaign X is at [currency][CPL] — 32% below account average. Its da
 Bad insight = "continue monitoring performance."
 
 ### Step 3 — Generate Message
-Format exactly like this (use real numbers, no placeholders):
+Follow this format EXACTLY. Do not add extra sections, do not rename sections, do not reorder sections. Use real numbers from Step 2, no placeholders:
 
 ```
 📊 *[Business Name] Daily Marketing Pulse*
@@ -68,10 +68,15 @@ Format exactly like this (use real numbers, no placeholders):
 
 [2-3 bullets max. Each must have a specific number and a specific action. No vague observations.]
 
-🆕 *New This Week*
-[If any campaigns started in the last 7 days:]
-• [Campaign name] · [date] · [currency][CPL] CPL · [leads] leads · [currency][spend] spent · [performance assessment + action e.g. "Strong start — scale budget" / "Early CPL high, monitor 2 more days before pausing" / "Underperforming vs account avg, review creative"]
-[One bullet per campaign. If none: "No new ads this week."]
+🆕 *New Ads Performance*
+[If any campaigns started in the last 7 days, one block per campaign:]
+*[Campaign name]*
+_[date written as "5 Jun" format, not "5/6"] · [currency][CPL] CPL · [leads] leads · [currency][spend] spent · [performance assessment + action]_
+
+[Blank line between each campaign. If none: "No new ads this week."]
+
+🎯 *Opportunity Score: [score]/100*
+[Explain the top Meta recommendation in plain English — what it means and why it matters. Example: "Meta suggests consolidating overlapping ad sets — multiple ad sets targeting similar audiences compete against each other in the auction, driving up CPL. Merging them could lower CPL by 28%." If not available, omit this section entirely.]
 
 Powered by Marketing Intelligence Agent 🤖
 ```
@@ -118,36 +123,39 @@ Generate 3 recommendations. Each must follow:
 📊 *[Business Name] Weekly Marketing Report*
 📅 Week of [date range]
 
-━━━ 📈 THIS WEEK vs LAST WEEK ━━━
+📈 *This Week vs Last Week*
 💰 Spend: [currency][this week] ([▲/▼][%] vs last week)
 👥 Leads: [this week] ([▲/▼][%] vs last week)
 📊 Blended CPL: [currency][this week] ([▲/▼][%] vs last week)
 
-━━━ 🏆 TOP 3 CAMPAIGNS ━━━
+🏆 *Top 3 Campaigns*
 1. [Name] — [leads] leads · [currency][CPL] CPL
 2. [Name] — [leads] leads · [currency][CPL] CPL
 3. [Name] — [leads] leads · [currency][CPL] CPL
 
-━━━ ⚠️ BOTTOM 3 CAMPAIGNS ━━━
+⚠️ *Bottom 3 Campaigns*
 1. [Name] — [leads] leads · [currency][CPL] CPL
 2. [Name] — [leads] leads · [currency][CPL] CPL
 3. [Name] — [leads] leads · [currency][CPL] CPL
 
-🆕 *New This Week*
-[If any campaigns started in the last 7 days:]
-• [Campaign name] · [date] · [currency][CPL] CPL · [leads] leads · [currency][spend] spent · [performance assessment + action]
-[One bullet per campaign. If none: "No new ads this week."]
+🆕 *New Ads Performance*
+[If any campaigns started in the last 7 days, one block per campaign:]
+*[Campaign name]*
+_[date written as "5 Jun" format, not "5/6"] · [currency][CPL] CPL · [leads] leads · [currency][spend] spent · [performance assessment + action]_
 
-━━━ 🔄 FUNNEL ━━━
-Impressions: [count]
-→ Clicks: [count]
-→ Form Submissions: [count]
-[Only include this line if conversion data is available from Meta actions:] → Converted: [count] ([conversion rate]%)
+[Blank line between each campaign. If none: "No new ads this week."]
 
-━━━ 🤖 THIS WEEK'S ACTIONS ━━━
+🔄 *Funnel*
+Impressions: [count] → Clicks: [count] → Form Submissions: [count]
+[Only include if conversion data available:] → Converted: [count] ([conversion rate]%)
+
+🤖 *This Week's Actions*
 1. [Recommendation with specific action]
 2. [Recommendation with specific action]
 3. [Recommendation with specific action]
+
+🎯 *Opportunity Score: [score]/100*
+[Explain the top Meta recommendation in plain English — what it means and why it matters. Example: "Meta suggests consolidating overlapping ad sets — multiple ad sets targeting similar audiences compete against each other in the auction, driving up CPL. Merging them could lower CPL by 28%." If not available, omit this section entirely.]
 
 Powered by Marketing Intelligence Agent 🤖
 ```
