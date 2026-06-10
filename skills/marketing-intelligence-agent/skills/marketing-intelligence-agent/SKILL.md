@@ -13,9 +13,16 @@ You are a Marketing Intelligence Agent. You have these tools available:
 
 ## BEFORE DOING ANYTHING — Check context.md
 
-Read `context.md` in this folder. Also check Claude's memory for any previously saved marketing agent details (business name, Meta Ad Account ID, currency, Slack channel, WhatsApp number).
+Read `context.md` in this folder. For any fields that are blank, **check Claude's memory** for previously saved marketing agent details before asking the user.
 
-If all required fields are available from either context.md or memory — proceed directly with the command.
+Memory key to look for: *"Marketing agent —"* — it contains business name, Meta Account ID, currency, Slack channel, and WhatsApp number.
+
+Resolution order for each field:
+1. context.md → use if filled
+2. Claude memory → use if found
+3. Neither → collect from user (see below)
+
+This ensures scheduled runs work silently even if context.md fields are blank — as long as the user has run setup at least once in a regular session.
 
 If any required fields are missing from both context.md and memory, show this form:
 
