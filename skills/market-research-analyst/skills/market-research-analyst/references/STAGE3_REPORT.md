@@ -2,240 +2,176 @@
 
 ## Purpose
 
-Transform raw extracted data into a structured, founder-useful report. The best reports surface what is surprising, specific, and actionable — not just what is obvious. A founder reading this report should be able to make a real product, pricing, or marketing decision from it without needing a follow-up conversation.
+Turn raw evidence into a structured, founder-useful report that tells a story and ends in a decision. For Full Launch Assessment the report builds an argument — market → competition → customer → product → gap → go-to-market → make-vs-buy — and lands on a **GO / CONDITIONAL-GO / NO-GO verdict** the founder can act on tonight and pitch from. The best reports surface what is surprising, specific, and actionable, and are honest about confidence.
 
-Load `references/REPORT_TEMPLATE.md` alongside this file. This file tells you how to synthesise and what to say. REPORT_TEMPLATE.md tells you where to put it, how the tabs are structured, and what the HTML artifact should look like.
+Load `references/REPORT_TEMPLATE.md` alongside this file. This file says how to synthesise and what to conclude; REPORT_TEMPLATE.md says how to structure and render the artifact.
 
 ---
 
 ## Step 1: Synthesise before you write
 
-Before generating a single line of the HTML artifact, work through the extracted data and identify:
+Work through the evidence and decide:
 
-**The 3 strongest signals.** Findings supported by multiple sources, specific in language, and non-obvious — ideally something the founder did not already know or suspect. These go in the Overview tab and anchor the Deep Research prompt.
+- **The 3 strongest signals** — multi-source, specific, non-obvious. They anchor the masthead and the Deep Research prompt.
+- **The core whitespace** — one clear, defensible gap. This becomes the founder's wedge.
+- **The most usable verbatim** — 5–8 phrases a copywriter could ship tomorrow unchanged.
+- **The key data gaps** — what was thin or missing. This calibrates how confident the whole report sounds, and it sets the data-confidence meter.
+- **A point of view** — what the evidence means for THIS founder's decision and their stated question.
 
-**The core whitespace opportunity.** One clear, defensible gap in the market. This becomes the anchor of the Whitespace section or the Comprehensive Overview's positioning angle.
-
-**The most usable verbatim language.** 5–8 exact customer phrases that a copywriter could put into an ad tomorrow without changing a word. These go in the Ad Language section.
-
-**The key gaps in the data.** Where did the extraction fall short? Which sources returned nothing? Which findings are based on thin evidence? This calibrates how confident the report sounds throughout.
-
-**A point of view.** The report should not just organise findings — it should have a perspective on what the data means for this founder's opportunity. Form this perspective during synthesis. Write it into the Overview tab.
+For Full Launch Assessment, also pull together: the market size/CAGR picture, the funding/traction read on competitors, the flavour/variant winners, the GTM shape, the ambassador call, and the make-vs-buy lean. These feed the scorecard and verdict.
 
 ---
 
 ## Step 2: Insight quality criteria
 
-Not all findings are equal. Calibrate how prominently you surface each one based on evidence strength.
+Calibrate prominence by evidence strength. Never hide weak evidence — represent confidence accurately so the founder weights findings correctly.
 
-### Strong signal
-- Supported by 3 or more independent sources
-- Specific: names a price point, a product format, a behavioural pattern, an exact phrase
-- Actionable: a founder can make a decision based on it
-- Present it with confidence in the report. Cite all sources.
-
-### Medium signal
-- Supported by 1–2 credible sources
-- Specific but not confirmed at scale
-- Present it but note the evidence base: "Based on Amazon.in reviews (18 reviews at time of research)..."
-
-### Weak signal
-- Single mention, low-engagement thread, speculative inference
-- Still worth including — early signals matter to founders
-- Flag it clearly: "Early-stage signal — limited data. Recommend monitoring or validating with primary research."
-
-The goal is not to only report on things you are certain of. The goal is to accurately represent your confidence level so the founder can decide how much weight to give each finding.
+- **Strong** — 3+ independent sources; specific (a price, format, behaviour, exact phrase); actionable. Present with confidence; cite all sources.
+- **Medium** — 1–2 credible sources; specific but unconfirmed at scale. Present with the evidence base noted ("based on 18 Amazon.in reviews…").
+- **Weak** — single mention, low-engagement, or inference. Still include — early signals matter — but flag: "Early signal, limited data. Validate before betting on it."
 
 ---
 
-## Step 3: Writing each core dimension well
+## Step 3: Writing the four core dimensions
 
-### Unmet Needs — be specific and actionable
+### Unmet Needs — specific and actionable
+Test: could a founder read it and immediately sketch a product or price point?
+**Good:** "No protein snack in India offers a *savoury* option under ₹100 — every sub-₹100 product is sweet/chocolate. Three r/IndiaFitness threads ask for savoury; 41% of 3★ reviews on the category leader cite 'too sweet'. People currently default to roasted chana or eggs. The need is real: everyday savoury snacking, not dessert-flavoured bars."
+**Bad:** "Customers want more options."
+For each: the need stated specifically (format/price/ingredient/experience); evidence (source, count); the current workaround; signal strength. Order strongest first.
 
-The test of a well-written unmet need: could a founder read it and immediately sketch a product or a price point?
-
-**Good:**
-"No dark chocolate brand in India offers a single-serve portion under ₹100. Multiple Amazon.in reviewers mention buying a full bar and eating more than intended — the smallest Darkins format is 40g at ₹180. Three Reddit threads ask specifically for portion-controlled options. The need is real: everyday snacking, not occasional indulgence."
-
-**Bad:**
-"Customers want more affordable chocolate options."
-
-The good version names a specific format (single-serve), a specific price point (₹100), a behavioural pattern (unintended overeating), a specific gap in the competitive offering (smallest format available), and the underlying insight (snacking vs. treating). The bad version is a vague direction, not an actionable finding.
-
-For each unmet need, always include:
-- What the need is, stated specifically (format, price, ingredient, or experience)
-- Evidence — which source, how many mentions or references
-- What people currently use or do instead (the workaround) — if anything
-- Signal strength: Strong / Medium / Weak
-
-Order unmet needs by signal strength — strongest first.
-
----
-
-### Repeat Signals — link to specific product properties, not general satisfaction
-
-The test: could a product manager use this to make a design or formulation decision?
-
-**Good:**
-"Darkins reviewers who re-purchase consistently cite texture ('snaps like a real chocolate') and the 25g format — they call it their 'daily square'. Repeat buyers are using it as an everyday snack, not a treat. The gifting framing on Darkins' own website appears disconnected from actual buyer behaviour."
-
-**Bad:**
-"Customers seem to like the product and come back for more."
-
-The good version names a specific physical property (snap texture), a specific product format (25g), a behavioural pattern (daily snacking), and a strategic implication (brand positioning may be misaligned with actual use case). It is useful. The bad version says nothing.
-
-For repeat signals:
-- Name the specific product property that drives re-purchase — texture, taste, format, size, packaging
-- Name what causes churn — specific complaints that push people away
-- Note whether customers are vocal advocates (actively recommend to others, appear in threads praising) or silent buyers
-- Note if gifting signals are present — strong loyalty and premium pricing permission marker
-
----
+### Repeat Signals — tie to specific product properties
+Test: could a product manager make a formulation/design decision from it?
+**Good:** "Repeat buyers cite the 40g single-serve format ('fits my gym bag') and a non-chalky texture. They use it as a daily snack, not a treat — but the leading brand's gifting-style packaging is misaligned with that behaviour."
+**Bad:** "People like it and come back."
+Name the property driving re-purchase; name what causes churn; note whether buyers are vocal advocates or silent; flag gifting signals (loyalty + premium-price permission).
 
 ### Ad Language — verbatim only, every entry sourced
+The dimension founders use most directly. If you cannot trace a phrase to a source, leave it out.
+Group by type: **Product language** (what it is/does) · **Emotional language** (how it feels) · **Trust language** (certs, sourcing, process) · **Problem statements** (what they were tired of). Tag each phrase with its source. **Highlight cross-source phrases** explicitly — "appears across Amazon.in and Reddit, customers reach for this unprompted" — these are the most valuable copy signals.
 
-This is the dimension founders use most directly. Every entry must be real customer language. If you cannot trace a phrase to a specific source, do not include it.
-
-**Good entry:**
-- "snaps like a real chocolate" — Amazon.in, 4-star review, Darkins
-- "finally a chocolate I don't feel guilty about every day" — Reddit r/india, thread: "best dark chocolate India"
-- "no waxy aftertaste" — Myntra review, Paul & Mike
-
-**Bad entry:**
-- "Rich and indulgent" — this is generic marketing language, not a customer quote
-- "High quality ingredients" — same problem; this is what brands say, not what customers say
-
-Organise by type within the tab, as defined in REPORT_TEMPLATE.md:
-- **Product language** — what the product is or does (physical properties, formulation)
-- **Emotional language** — how it makes customers feel (before/after states, identity)
-- **Trust language** — certifications, sourcing, process claims customers reference approvingly
-- **Problem statements** — what customers were tired of or couldn't find before this product
-
-**Highlight cross-source phrases.** When the same phrase or close variant appears independently across two or more sources, flag it explicitly: "Appears across Amazon.in and Reddit — customers are reaching for this language unprompted." These are the most valuable copy signals.
+### Whitespace — frame as a specific product opportunity
+Test: could a founder put it on a pitch slide?
+**Good:** "No brand offers a savoury, high-protein (15g+) snack under ₹100 with clean-label ingredients. The nearest options are sweet bars (₹120–₹180) or unbranded roasted chana (no protein claim, no brand trust). Three Reddit threads in the last year asked for exactly this."
+**Bad:** "Opportunity in the health segment."
+For each: frame as "no brand does [X] well for [Y]"; what exists and why it falls short; evidence + signal strength; whether primary research would raise confidence. Order strongest first.
 
 ---
 
-### Whitespace — frame as a specific product opportunity, not an abstraction
+## Step 4: Writing the strategic sections (Full Launch Assessment)
 
-The test: could a founder put this on a slide deck and pitch it to an investor?
+### Market — size, growth, momentum
+State the market size with its source and the CAGR with its forecast window. If estimates conflict, give the range and name both sources. Add momentum signals (quick-commerce growth, seasonality, urbanisation). End with the read: is this a big-and-growing tailwind, a flat/mature market needing share-steal, or too small/nascent to size? If sizing was unavailable, say so and interpret it.
 
-**Good:**
-"No brand currently offers a sugar-free dark chocolate in the ₹150–₹250 range with a verifiable diabetic-safe claim. Amul sugar-free exists but has consistent texture complaints across Amazon.in and Reddit. Three Reddit threads in the last year have explicitly asked for this. The nearest international equivalent (Lindt 90%) is not widely available in India and is priced above ₹500."
+### Competition — profiles, pricing, funding
+Per competitor: positioning (their words), price range (₹X–₹Y), strengths and weaknesses (customer-sourced), distribution, and **funding/traction** (raised, stage, trajectory). Then the competitive read: concentrated or fragmented? are the leaders funded and aggressive (closing window) or sleepy (open window)? Include a pricing map and call out price-segment gaps explicitly ("nothing between ₹100 and ₹250", "no single-serve under ₹100").
 
-**Bad:**
-"There is an opportunity in the health-conscious segment."
+### Product — flavour/variant winners
+Which flavours/variants win (rating + review volume), which lose, and which requested flavour/format nobody offers. Tie to the founder's product: "lead with [winning flavour]; the [requested-but-absent] flavour is an opening." If variant-level data was not separable, say so.
 
-The good version names a specific price range, a specific product attribute, a specific consumer need, the current landscape and why it fails, and evidence that validates real demand. It is actionable. The bad version could describe any market.
+### Go-to-Market — channels and ambassador call
+Recommend a channel sequence grounded in where the category's customers and competitors actually are (D2C site, quick-commerce, marketplaces, retail) and what the pricing/distribution data showed. Then the **ambassador recommendation**, stated as a decision with reasoning:
+- If competitors win on micro-creator content and there is organic creator coverage → "Start with micro-creators / UGC, not a celebrity ambassador — cheaper, and the category already converts on it."
+- If the category is trust-led and rivals use credible faces (dermatologist, athlete) → "A credibility-led ambassador may be worth it once you have product-market fit; not at launch."
+- Default for early-stage/thin budget → "Skip a paid ambassador now; prove demand with creator content and pre-order tests first." Always give the reason, not just yes/no.
 
-For each whitespace opportunity:
-- Frame it as a product concept: "No brand currently does [X] well for [Y customer]"
-- Name what exists and why it falls short
-- Note the evidence base and signal strength
-- If validating with primary research would increase confidence, say so
-
-Order by signal strength — strongest first.
-
----
-
-## Step 4: Writing the Overview tab
-
-Write this last, after all other tabs are populated. The Overview is where synthesis happens — it should reflect everything you know, not be a preview written before synthesis.
-
-**What a good overview does:**
-- Names the competitive dynamic in one sentence (who has the market, how concentrated it is)
-- Points to the core opportunity in one sentence (what the data reveals as the most defensible entry point)
-- Notes data confidence honestly (which sources were strong, which were thin)
-
-**Good overview:**
-"Darkins and Paul & Mike dominate Indian premium dark chocolate, but both are priced above ₹280/100g and positioned primarily as gifting products. Amazon.in reviews and Reddit threads consistently surface demand for an everyday dark chocolate at under ₹100 per serve — the gifting frame prices both brands out of daily use. The most vocal unmet need is a portion-controlled, genuinely low-sugar option for daily snacking. Blinkit data was unavailable — pricing figures are from brand websites and may not reflect current promotional pricing."
-
-**Bad overview:**
-"I researched several competitors in the Indian dark chocolate market. Amazon.in and Reddit were the main sources. Several findings are presented below."
-
-The bad version describes the research process. The good version presents a point of view on the market.
+### Make vs Buy — own plant vs contract manufacturing
+State the lean as a recommendation with reasoning, grounded in the manufacturing evidence:
+- **Contract / co-packer** (the usual right answer for a new D2C brand): if reputable co-packers exist and MOQ is reachable, recommend starting contract to stay capital-light, prove demand, and protect cash — own a plant only after volume justifies it. Give the indicative MOQ found.
+- **Own plant**: only if the product needs proprietary process/quality control, co-packers are absent, or the founder already has scale. Say what would have to be true.
+- If the founder said "undecided", make the call and explain it. If they said "own", pressure-test it honestly against the evidence. Flag all manufacturing data as indicative — recommend confirming MOQ/cost with 2–3 quotes before committing.
 
 ---
 
-## Step 5: Handling data gaps constructively
+## Step 5: The Verdict (Full Launch Assessment only)
 
-Gaps are information. Write about them with the same care as positive findings.
+This is the section the founder came for. Write it after every other section is populated.
 
-### Unavailable source — interpret the absence
+### The scorecard
+Score six dimensions, each 0–5, as **analyst judgment grounded in the evidence above** — not found facts. Beside the scores, show a single **data-confidence** level (High / Medium / Low) reflecting how much real data backs them.
 
-Do not silently skip an unavailable source. Note it in the relevant section and interpret what the absence might mean.
+1. **Market pull** — is the category big and growing? (from Market)
+2. **Demand clarity** — do customers clearly want this thing? (from Unmet Needs / PMF signal)
+3. **Whitespace** — is there a real, ownable gap? (from Whitespace)
+4. **Competitive room** — how much room to enter? high = fragmented/sleepy, low = crowded/funded (from Competition)
+5. **Price & margin headroom** — can you price to the gap and still make money? (from Pricing + Manufacturing)
+6. **Execution feasibility** — can a small team actually ship this? (from Make-vs-Buy + GTM difficulty)
 
-Example: "No Blinkit listing found for Paul & Mike after search fallback — they appear to be D2C-only or not yet investing in quick-commerce. This is either a distribution gap or a deliberate channel strategy."
+Every score must be defensible from a finding above. Do not invent precision: if data for a dimension is thin, score conservatively and lower the data-confidence level rather than guessing high.
 
-### Sparse data — flag and calibrate
+### The call
+Map the scorecard + confidence to one of three, and state it plainly with a one-sentence thesis:
 
-"Darkins has 12 Amazon.in reviews at the time of research. Findings from this source should be treated as directional — not representative of the full customer base. Recommend re-checking in 3–6 months as review volume grows."
+- **GO** — clear demand, a real and ownable whitespace, workable economics, feasible execution, and at least Medium data confidence. Thesis names the wedge: "Launch a savoury, 15g-protein snack at ₹89/40g — no brand owns savoury sub-₹100, and demand is showing up unprompted."
+- **CONDITIONAL-GO** — promising but hinged on conditions. State the conditions as testable gates: "Go if (a) a co-packer MOQ under 5,000 units exists at target cost, and (b) a pre-order test on the savoury angle converts above [bar]." This is the honest landing spot for most early-stage ideas and when data is thin — say so.
+- **NO-GO** — crowded and well-funded with no defensible gap, ambiguous/weak demand, or economics that do not work. Say why specifically and, where possible, name the adjacent angle that *would* work.
 
-### Conflicting signals across sources
+Never force a confident GO/NO-GO on thin data. CONDITIONAL-GO with named gates is more useful and more honest than false certainty.
 
-Do not smooth over conflicts. Surface them — they are often the most interesting findings.
+### How to win (the playbook)
+3–5 concrete moves grounded in the findings: the wedge product/flavour/price, the lead channel, the ambassador stance, the first ad lines (pulled verbatim from Ad Language), and the make-vs-buy first step.
 
-"Amazon.in reviews praise the sweetness level; Reddit r/IndiaFitness users call it too sweet for a health chocolate. This suggests a positioning mismatch — two different customer segments with different expectations of what 'dark chocolate' means."
+### Top risks / watch-outs
+3 specific risks: e.g. "the category leader raised Series A in 2024 and is expanding fast — the first-mover window on savoury may be 12–18 months"; "health/protein claims face tightening FSSAI scrutiny — get label claims legally reviewed"; "co-packer MOQ may exceed early demand — pre-sell before committing a production run."
 
-Conflicts like this reveal that a brand is trying to serve two incompatible audiences. That is strategic intelligence.
-
----
-
-## Step 6: The Comprehensive mode positioning angle
-
-This applies only to Comprehensive mode. After populating all tabs, write a recommended positioning angle in the Overview tab.
-
-This should be:
-- One clear, specific sentence the founder could put on a pitch deck
-- Grounded in the whitespace and competitor gap analysis just completed
-- Not a vague direction ("go premium health") but a concrete stance ("position as the everyday low-sugar dark chocolate for daily snacking at ₹79–₹99 per 25g bar — no brand currently owns this")
-
-Also include in the Overview:
-- Top 3 risks or watch-outs a founder should know before entering (e.g. "Darkins is actively growing its D2C — first-mover advantage window may be closing", "Health claim regulation in India is tightening — diabetic-safe claims require careful legal review")
+### First 90 days
+3–5 sequenced first moves: validate (pre-order test on the wedge), source (get 3 co-packer quotes), build (D2C storefront + winning flavour), seed (micro-creator content using the verbatim ad lines).
 
 ---
 
-## Step 7: Report quality checklist
+## Step 6: Writing the masthead / overview
 
-Before generating the HTML artifact, verify mentally:
+Write last. It is the executive answer, not a description of the research process.
+- The verdict and one-sentence thesis (the founder should get the answer in five seconds)
+- The competitive dynamic in one line
+- The core opportunity in one line
+- Data confidence stated honestly (which sources were strong, which were thin/unavailable)
 
-- [ ] Every tab defined in REPORT_TEMPLATE.md for the selected mode has substantive content
-- [ ] Every finding cites a specific source by name
-- [ ] Every data gap is named and explained, not silently omitted
-- [ ] All verbatim quotes in Ad Language are actually verbatim — not paraphrased
-- [ ] Pricing data includes the specific number (₹X for Yg) — not approximate ranges
-- [ ] Signal strength is noted wherever findings are weak or based on limited data
-- [ ] The Overview tab has a point of view, not just a description of what was researched
-- [ ] For Comprehensive mode: the positioning angle is specific and defensible
+**Good:** "GO, with conditions. Darkins and Paul & Mike own premium gifting chocolate above ₹280/100g; nobody owns everyday low-sugar snacking under ₹100. Demand for portion-controlled, genuinely low-sugar daily chocolate shows up repeatedly on Amazon.in and Reddit. Verdict rests mainly on review and community data — Blinkit pricing was unavailable, so price points are from brand sites. Medium confidence."
+**Bad:** "I researched competitors in the chocolate market. Amazon and Reddit were the main sources. Findings below."
+
+For Competitor and PMF modes there is no verdict section — the overview gives the competitive read or the honest PMF assessment instead.
+
+---
+
+## Step 7: Handling data gaps constructively
+
+Gaps are information; write about them with the same care as findings.
+- **Unavailable source** — note it and interpret: "No Blinkit listing for Brand X after fallback — likely D2C-only or not on quick-commerce; a distribution gap or a deliberate strategy."
+- **Sparse data** — flag and calibrate: "12 Amazon.in reviews — directional, not representative; recheck in 3–6 months."
+- **Conflicting signals** — surface, don't smooth: "Amazon reviewers like the sweetness; r/IndiaFitness calls it too sweet — a positioning mismatch between two segments." Conflicts are often the most strategic findings.
 
 ---
 
 ## Step 8: Assembling the Deep Research Prompt
 
-The "Copy Deep Research Prompt" button generates a follow-up prompt for Claude's Deep Research mode. It must be genuinely useful — not a copy of the intake form, and not a vague request for "more research."
+The "Copy Deep Research Prompt" button generates a genuinely useful follow-up — not a copy of the intake, not "do more research."
+- **Three signals**: the three most specific, decision-changing findings.
+- **Three questions**: specific and investigable. Good: "What FSSAI requirements apply to a 'no added sugar' chocolate claim in India, and which brands hold relevant certifications?" Bad: "Research health claims."
+- **Sources to prioritise**: based on what this run could not access or found thin — name the platforms and why.
+Build these from the report's actual content; store as JS constants and interpolate into the template in REPORT_TEMPLATE.md.
 
-**The three signals to include:**
-Select the three most specific and actionable findings from the report — findings where more data would directly change a founder's decision. Avoid generic findings. Prioritise the ones the founder is most likely to want to investigate further.
+---
 
-**The three questions to include:**
-Frame them as specific, investigable questions — not directions.
+## Step 9: Report quality checklist (verify mentally before generating)
 
-Good: "What is the actual return rate on dark chocolate products on Amazon.in, and what reasons do buyers cite when returning?"
-Bad: "Learn more about customer sentiment."
-
-Good: "Does any Indian brand currently hold a FSSAI-approved 'diabetic-safe' certification for dark chocolate, and what does the certification process require?"
-Bad: "Research health claims."
-
-**Sources to prioritise in the follow-up:**
-Based on what this research could not access or found thin. If Reddit was sparse, recommend it. If brand websites were missing, list them. Be specific about which platforms to prioritise and why.
-
-These three components — signals, questions, and sources — are assembled dynamically from the report's actual content. Store them as JavaScript constants in the artifact script block, then interpolate into the prompt template defined in REPORT_TEMPLATE.md.
+- [ ] Every section the mode requires has substantive content
+- [ ] Every finding cites a source by name
+- [ ] Every data gap is named and interpreted, not silently omitted
+- [ ] All Ad-Language quotes are actually verbatim
+- [ ] Pricing includes the specific number (₹X/Yg), not vague ranges
+- [ ] Market figures carry their source AND forecast window; conflicts shown as a range
+- [ ] Funding figures are sourced; absences interpreted
+- [ ] Flavour/variant winners named, or variant data explicitly noted as unavailable
+- [ ] Signal strength noted wherever evidence is thin
+- [ ] (Full Launch Assessment) Scorecard scores are each defensible from a finding; data confidence stated
+- [ ] (Full Launch Assessment) The verdict directly answers the founder's stated `decision`
+- [ ] (Full Launch Assessment) How-to-win, risks, and 90-day moves are specific, not generic
+- [ ] The masthead/overview has a point of view, not a process description
 
 ---
 
 ## Chat message after the report artifact
 
-Keep it short. The report is on the right — do not summarise it in chat:
-
-> "Your report is ready on the right. Use the tabs to explore each dimension. Hit 'Copy Deep Research Prompt' to go deeper with Claude's Deep Research mode, or 'Download PDF' to save it."
-
-Do not describe what is in the report in chat. The founder can read it.
+Keep it short — the report is on the right, do not summarise it:
+> "Your report is ready on the right. It opens with the verdict, then builds the case section by section. Hit 'Copy Deep Research Prompt' to go deeper with Claude's Deep Research, or 'Download PDF' to save it."
