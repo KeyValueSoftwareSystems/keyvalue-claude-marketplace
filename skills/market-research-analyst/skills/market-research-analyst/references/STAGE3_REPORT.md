@@ -14,9 +14,10 @@ Work through the evidence and decide:
 
 - **The 3 strongest signals** — multi-source, specific, non-obvious. They anchor the masthead and the Deep Research prompt.
 - **The core whitespace** — one clear, defensible gap. This becomes the founder's wedge.
-- **The most usable verbatim** — 5–8 phrases a copywriter could ship tomorrow unchanged.
+- **The most usable verbatim** — 5–8 phrases a copywriter could ship tomorrow unchanged, with source links.
 - **The key data gaps** — what was thin or missing. This calibrates how confident the whole report sounds, and it sets the data-confidence meter.
 - **A point of view** — what the evidence means for THIS founder's decision and their stated question.
+- **Source URLs for everything** — every finding, quote, data point, and claim must have a clickable source link in the report.
 
 For Full Launch Assessment, also pull together: the market size/CAGR picture, the funding/traction read on competitors, the flavour/variant winners, the GTM shape, the ambassador call, and the make-vs-buy lean. These feed the scorecard and verdict.
 
@@ -26,9 +27,11 @@ For Full Launch Assessment, also pull together: the market size/CAGR picture, th
 
 Calibrate prominence by evidence strength. Never hide weak evidence — represent confidence accurately so the founder weights findings correctly.
 
-- **Strong** — 3+ independent sources; specific (a price, format, behaviour, exact phrase); actionable. Present with confidence; cite all sources.
-- **Medium** — 1–2 credible sources; specific but unconfirmed at scale. Present with the evidence base noted ("based on 18 Amazon.in reviews…").
-- **Weak** — single mention, low-engagement, or inference. Still include — early signals matter — but flag: "Early signal, limited data. Validate before betting on it."
+**CRITICAL: Every data point, quote, finding, and claim MUST include a hyperlinked source citation.** The report is evidence-based decision support; founders need to click through to verify, explore context, and build their own intuition. No assertion without a clickable link.
+
+- **Strong** — 3+ independent sources; specific (a price, format, behaviour, exact phrase); actionable. Present with confidence; cite and link all sources.
+- **Medium** — 1–2 credible sources; specific but unconfirmed at scale. Present with the evidence base noted ("based on [18 Amazon.in reviews](URL)…").
+- **Weak** — single mention, low-engagement, or inference. Still include — early signals matter — but flag: "Early signal, limited data ([source link](URL)). Validate before betting on it."
 
 ---
 
@@ -36,9 +39,9 @@ Calibrate prominence by evidence strength. Never hide weak evidence — represen
 
 ### Unmet Needs — specific and actionable
 Test: could a founder read it and immediately sketch a product or price point?
-**Good:** "No protein snack in India offers a *savoury* option under ₹100 — every sub-₹100 product is sweet/chocolate. Three r/IndiaFitness threads ask for savoury; 41% of 3★ reviews on the category leader cite 'too sweet'. People currently default to roasted chana or eggs. The need is real: everyday savoury snacking, not dessert-flavoured bars."
+**Good:** "No protein snack in India offers a *savoury* option under ₹100 — every sub-₹100 product is sweet/chocolate. Three [r/IndiaFitness threads](https://reddit.com/r/IndiaFitness/search) ask for savoury; 41% of [3★ reviews on the category leader](https://amazon.in/product-page) cite 'too sweet'. People currently default to roasted chana or eggs. The need is real: everyday savoury snacking, not dessert-flavoured bars."
 **Bad:** "Customers want more options."
-For each: the need stated specifically (format/price/ingredient/experience); evidence (source, count); the current workaround; signal strength. Order strongest first.
+For each: the need stated specifically (format/price/ingredient/experience); evidence with linked source (source, count); the current workaround; signal strength. Order strongest first.
 
 ### Repeat Signals — tie to specific product properties
 Test: could a product manager make a formulation/design decision from it?
@@ -46,25 +49,25 @@ Test: could a product manager make a formulation/design decision from it?
 **Bad:** "People like it and come back."
 Name the property driving re-purchase; name what causes churn; note whether buyers are vocal advocates or silent; flag gifting signals (loyalty + premium-price permission).
 
-### Ad Language — verbatim only, every entry sourced
-The dimension founders use most directly. If you cannot trace a phrase to a source, leave it out.
-Group by type: **Product language** (what it is/does) · **Emotional language** (how it feels) · **Trust language** (certs, sourcing, process) · **Problem statements** (what they were tired of). Tag each phrase with its source. **Highlight cross-source phrases** explicitly — "appears across Amazon.in and Reddit, customers reach for this unprompted" — these are the most valuable copy signals.
+### Ad Language — verbatim only, every entry sourced and linked
+The dimension founders use most directly. If you cannot trace a phrase to a source with a URL, leave it out.
+Group by type: **Product language** (what it is/does) · **Emotional language** (how it feels) · **Trust language** (certs, sourcing, process) · **Problem statements** (what they were tired of). Tag each phrase with its linked source: `"phrase" — [source name](URL)`. **Highlight cross-source phrases** explicitly — "appears across [Amazon.in](URL1) and [Reddit](URL2), customers reach for this unprompted" — these are the most valuable copy signals.
 
 ### Whitespace — frame as a specific product opportunity
 Test: could a founder put it on a pitch slide?
-**Good:** "No brand offers a savoury, high-protein (15g+) snack under ₹100 with clean-label ingredients. The nearest options are sweet bars (₹120–₹180) or unbranded roasted chana (no protein claim, no brand trust). Three Reddit threads in the last year asked for exactly this."
+**Good:** "No brand offers a savoury, high-protein (15g+) snack under ₹100 with clean-label ingredients. The nearest options are sweet bars ([₹120–₹180](URL)) or unbranded roasted chana (no protein claim, no brand trust). Three [Reddit threads](URL) in the last year asked for exactly this."
 **Bad:** "Opportunity in the health segment."
-For each: frame as "no brand does [X] well for [Y]"; what exists and why it falls short; evidence + signal strength; whether primary research would raise confidence. Order strongest first.
+For each: frame as "no brand does [X] well for [Y]"; what exists and why it falls short (with linked sources); evidence + signal strength; whether primary research would raise confidence. Order strongest first.
 
 ---
 
 ## Step 4: Writing the strategic sections (Full Launch Assessment)
 
 ### Market — size, growth, momentum
-State the market size with its source and the CAGR with its forecast window. If estimates conflict, give the range and name both sources. Add momentum signals (quick-commerce growth, seasonality, urbanisation). End with the read: is this a big-and-growing tailwind, a flat/mature market needing share-steal, or too small/nascent to size? If sizing was unavailable, say so and interpret it.
+State the market size with its linked source and the CAGR with its forecast window and linked source. Format: "India protein supplements [~₹33,000 Cr](URL1), [14% CAGR 2024–2030](URL2) (IMARC)". If estimates conflict, give the range and link both sources. Add momentum signals (quick-commerce growth, seasonality, urbanisation) with sources. End with the read: is this a big-and-growing tailwind, a flat/mature market needing share-steal, or too small/nascent to size? If sizing was unavailable, say so and interpret it.
 
 ### Competition — profiles, pricing, funding
-Per competitor: positioning (their words), price range (₹X–₹Y), strengths and weaknesses (customer-sourced), distribution, and **funding/traction** (raised, stage, trajectory). Then the competitive read: concentrated or fragmented? are the leaders funded and aggressive (closing window) or sleepy (open window)? Include a pricing map and call out price-segment gaps explicitly ("nothing between ₹100 and ₹250", "no single-serve under ₹100").
+Per competitor: positioning (their words, linked to brand site), price range (₹X–₹Y, linked to listing), strengths and weaknesses (customer-sourced with links), distribution, and **funding/traction** (raised, stage, trajectory, linked to article/source). Then the competitive read: concentrated or fragmented? are the leaders funded and aggressive (closing window) or sleepy (open window)? Include a pricing map with platform links and call out price-segment gaps explicitly ("nothing between ₹100 and ₹250", "no single-serve under ₹100").
 
 ### Product — flavour/variant winners
 Which flavours/variants win (rating + review volume), which lose, and which requested flavour/format nobody offers. Tie to the founder's product: "lead with [winning flavour]; the [requested-but-absent] flavour is an opening." If variant-level data was not separable, say so.
@@ -156,14 +159,15 @@ Build these from the report's actual content; store as JS constants and interpol
 ## Step 9: Report quality checklist (verify mentally before generating)
 
 - [ ] Every section the mode requires has substantive content
-- [ ] Every finding cites a source by name
+- [ ] Every finding cites a source by name AND includes a clickable hyperlink
 - [ ] Every data gap is named and interpreted, not silently omitted
-- [ ] All Ad-Language quotes are actually verbatim
-- [ ] Pricing includes the specific number (₹X/Yg), not vague ranges
-- [ ] Market figures carry their source AND forecast window; conflicts shown as a range
-- [ ] Funding figures are sourced; absences interpreted
-- [ ] Flavour/variant winners named, or variant data explicitly noted as unavailable
+- [ ] All Ad-Language quotes are actually verbatim and linked to their source
+- [ ] Pricing includes the specific number (₹X/Yg) with platform links, not vague ranges
+- [ ] Market figures carry their linked source AND forecast window; conflicts shown as a range with both sources linked
+- [ ] Funding figures are sourced with links; absences interpreted
+- [ ] Flavour/variant winners named with sources, or variant data explicitly noted as unavailable
 - [ ] Signal strength noted wherever evidence is thin
+- [ ] Customer voice quotes include attribution with [source link](URL) format
 - [ ] (Full Launch Assessment) Scorecard scores are each defensible from a finding; data confidence stated
 - [ ] (Full Launch Assessment) The verdict directly answers the founder's stated `decision`
 - [ ] (Full Launch Assessment) How-to-win, risks, and 90-day moves are specific, not generic

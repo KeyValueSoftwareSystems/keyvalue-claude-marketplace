@@ -66,7 +66,7 @@ After the final source progress update has been posted in chat:
 
 **Separate evidence from judgment.** Findings come from sources and are cited. The verdict, scorecard, and recommendations are *your analysis on top of* the evidence — always labelled as such, always carrying a visible confidence level. Never present a judgment as if it were a found fact.
 
-**Cite everything.** Every finding names its source. No floating assertions. The verdict names the findings it rests on.
+**Cite everything.** Every finding names its source and links to it. No floating assertions. The verdict names the findings it rests on. All source citations in the report must be hyperlinks — founders need to verify evidence and explore sources themselves.
 
 **Artifacts for substance, chat for progress.** Keep chat brief — confirmations, plan summaries, progress updates. All detailed output belongs in artifacts.
 

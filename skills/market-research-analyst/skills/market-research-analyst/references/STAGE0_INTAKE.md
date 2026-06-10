@@ -52,105 +52,66 @@ For the strategic fields (stage, price, decision, manufacturing, tracks): pre-fi
 
 ---
 
-## Step 3: Generate the intake form artifact
+## Step 3: Load and output the intake form artifact
 
-One self-contained HTML artifact, all CSS/JS inline, zero external dependencies. Build elements in this exact order.
+Do not generate the form HTML from scratch. The complete form is pre-built in `references/INTAKE_FORM.html`. Load it, fill in the `PRE_FILL` constant, and output it as an HTML artifact.
 
-### Visual direction
-Clean, confident, modern — this may be the first thing a founder sees in a live demo.
-- Warm paper background (#F7F5F0), near-black ink (#18181B)
-- Single accent: deep indigo #4338CA; selected/active states tint #EEF0FF
-- Body 16px, generous line height (1.6)
-- Cards/inputs: 10px radius, 1px border #E4E0D7 that shifts to accent on focus
-- Card padding 1.5rem, field padding 0.75rem
-- Eyebrow labels and any data in a monospace stack (`ui-monospace, "SF Mono", Menlo, monospace`), uppercase, letter-spaced — this is the type signature, reused in the report
-- Single column on mobile
+### What to fill in
 
-Opening line inside the artifact:
-"Let's set up your research. I've pre-filled what I caught — adjust anything and hit Start Research when ready."
-
-### Form elements, in order
-
-**1. Research Mode — three styled radio cards** (side by side; stacked on mobile)
-Each card: mode name bold 16px, one-line description in muted grey 14px below. Entire card clickable. Selected = 2px accent border + tint background; unselected = 1px #E4E0D7 + white.
-- **Competitor Analysis** / "Map competitors, pricing, and what customers say"
-- **Product-Market Fit** / "Find unmet needs, repeat-purchase signals, and gaps"
-- **Full Launch Assessment** / "The full picture, ending in a GO / NO-GO verdict and how to win"
-
-Pre-select the inferred mode; default to Full Launch Assessment.
-
-**Selecting Full Launch Assessment reveals the "Launch details" block (element 6). The two lighter modes keep it hidden.** Wire this with a JS toggle on mode change.
-
-**2. Product description — required text input**
-Label: "What are you building?"
-Placeholder: "e.g. high-protein savoury snack for Indian gym-goers, launching D2C"
-Pre-fill if parsed. Required — block submission without it. Accent outline on focus.
-
-**3. Target market — dropdown**
-Label: "Target market" · Options: India / Southeast Asia / Global · Pre-select inferred; default India.
-
-**4. Competitors — tag input**
-Label: "Competitors" · Helper: "Optional — type a name and press Enter to add"
-Enter or comma adds a pill (accent bg, white text, × to remove); stored in a JS array; no limit. Pre-fill parsed names.
-If none parsed, helper: "Leave blank and we'll surface competitors during research."
-
-**5. Research focus — multi-select pills (optional)**
-Label: "What matters most?" · Helper: "Optional — select any, or leave blank to cover everything"
-Pills toggle independently. Default unselected (grey); selected = accent bg, white text.
-Pills: Pricing & pack sizes · Customer complaints · Repeat-purchase triggers · Ad language & copy · Market gaps · Distribution channels
-
-**6. Launch details — strategic block (only when Full Launch Assessment is selected)**
-Header: "Launch details" · Sub: "Optional — the more you tell us, the sharper the verdict."
-
-  **6a. Your stage** — three small radio pills: Just an idea · Pre-launch (building) · Launched (iterating). Default: none (treated as "not specified").
-
-  **6b. Target price point** — short text input. Label: "Target price (optional)". Placeholder: "e.g. ₹99 for a 40g bar". Pre-fill if stated.
-
-  **6c. Your biggest question** — short text input. Label: "What's the decision you're trying to make?". Placeholder: "e.g. is there room for a savoury protein snack under ₹100?". This becomes the spine of the verdict — capture it if offered.
-
-  **6d. Manufacturing** — three radio pills: Own plant · Contract / co-packer · Undecided. Default: Undecided.
-
-  **6e. Deep-dive tracks — multi-select pills with a Select all toggle.**
-  Header row: "Go deeper on:" with a small **"Select all"** link/button on the right that toggles every pill on or off.
-  Pills (all default ON for Full Launch Assessment — these are the new strategic tracks):
-  - Market size & growth (CAGR)
-  - Funding & competitor traction
-  - Flavours / variants that win
-  - Go-to-market plan
-  - Brand-ambassador call
-  - Make vs buy (manufacturing)
-
-  These tracks decide which Part-B sources Stage 1 pulls. All-on by default gives the founder the complete verdict; they can switch off any track to keep the run lighter.
-
-**7. Submit button**
-Label: "Start Research →" · Full-width, accent bg, white text, 48px, 16px bold — unmistakably the primary action.
-On click: validate → if fail, highlight field + inline error + stop → if pass, disable button, change label to "Setting up research…", call `sendPrompt()`.
-
-### Validation
-- Product empty → highlight, show "Tell us what you're building — this shapes the entire research plan."
-- Mode not selected → defensive only (always pre-selected): "Please select a research mode."
-- Everything else optional — no validation.
-
-### sendPrompt output format
-
-When validation passes, call exactly this (Stage 1 parses it verbatim — do not rename fields or alter the wrapper):
+The file has this constant near the top of its script block (line 153):
 
 ```javascript
-sendPrompt(`[RESEARCH_REQUEST]
-mode: ${selectedMode}
-product: ${productDescription.trim()}
-market: ${selectedMarket}
-competitors: ${competitorTags.join(', ') || 'none named'}
-focus: ${selectedFocus.join(', ') || 'all'}
-stage: ${selectedStage || 'not specified'}
-price_point: ${priceInput.trim() || 'not specified'}
-decision: ${decisionInput.trim() || 'general assessment'}
-manufacturing: ${selectedManufacturing || 'undecided'}
-tracks: ${selectedTracks.join(', ') || 'all'}
-[/RESEARCH_REQUEST]`);
+const PRE_FILL={product:"",market:"India",competitors:[],mode:"Full Launch Assessment",price_point:"",decision:""};
 ```
 
-For the two lighter modes the launch-details fields are hidden, so `stage`, `price_point`, `decision`, `manufacturing`, and `tracks` will carry their defaults — that is correct and Stage 1 handles it.
+Replace the values with what you parsed from the opening message:
+
+| Field | Value to set | Notes |
+|---|---|---|
+| `product` | Parsed product description | Leave `""` if not found |
+| `market` | `"India"` / `"Southeast Asia"` / `"Global"` | Default `"India"` |
+| `competitors` | Array of name strings — e.g. `["Darkins","Paul & Mike"]` | Leave `[]` if none found |
+| `mode` | `"Competitor Analysis"` / `"Product-Market Fit"` / `"Full Launch Assessment"` | Default `"Full Launch Assessment"` |
+| `price_point` | Target price if the user stated one | Leave `""` otherwise |
+| `decision` | The specific question/decision if stated | Leave `""` otherwise |
+
+**Only modify the `PRE_FILL` line. Do not change anything else in the file.**
+
+### How the form works
+
+The form handles all behaviour internally:
+- Mode card selection and the Full Launch Assessment conditional block (shows/hides automatically)
+- Tag input for competitors (Enter or comma to add, × to remove)
+- Focus pill toggling (optional multi-select)
+- Stage and manufacturing radio pills (Undecided pre-selected by default for manufacturing)
+- Track pills (all ON by default for Full Launch Assessment, with a Select all / Deselect all toggle)
+- Validation (product required, everything else optional)
+- Submit button state and `sendPrompt()` with the exact `[RESEARCH_REQUEST]` format Stage 1 expects
+
+### Output
+
+Output the complete file content as an HTML artifact. The form is ready to use.
+
+### The sendPrompt output format
+
+Already wired in the template — Stage 1 receives:
+
+```
+[RESEARCH_REQUEST]
+mode: ...
+product: ...
+market: ...
+competitors: ...
+focus: ...
+stage: ...
+price_point: ...
+decision: ...
+manufacturing: ...
+tracks: ...
+[/RESEARCH_REQUEST]
+```
+
+For Competitor Analysis and Product-Market Fit modes, the launch-details fields are hidden and carry their defaults — that is correct and Stage 1 handles it.
 
 ---
 

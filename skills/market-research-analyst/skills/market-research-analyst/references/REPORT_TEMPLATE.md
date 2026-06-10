@@ -54,11 +54,11 @@ Sections are numbered because the report is a sequence — an argument — and t
 - **Data confidence** chip: High / Medium / Low, with one line on why.
 - If CONDITIONAL-GO: the gates listed as a short checklist ("Go if: …").
 
-**The Market (01)** — size + CAGR cards (figure, window, source on each); momentum note; the read in one paragraph. Conflicting estimates shown as a range with both sources.
+**The Market (01)** — size + CAGR cards (figure, window, source on each, with source as clickable hyperlink); momentum note; the read in one paragraph. Conflicting estimates shown as a range with both sources linked.
 
-**The Competition (02)** — one card per competitor: positioning, price range, strengths (sourced), weaknesses (sourced), distribution, funding/traction. A pricing-map table below: `Product | Pack size | Price | Price/unit | Platform`, then explicit segment-gap callouts. Competitor named but no data → card reads "No data found — not in market or insufficient reviews." Then the competitive read.
+**The Competition (02)** — one card per competitor: positioning, price range, strengths (sourced and linked), weaknesses (sourced and linked), distribution, funding/traction (linked). A pricing-map table below: `Product | Pack size | Price | Price/unit | Platform (linked)`, then explicit segment-gap callouts. Competitor named but no data → card reads "No data found — not in market or insufficient reviews." Then the competitive read.
 
-**The Customer (03)** — unmet needs (titled blocks, ordered by strength, each with evidence/frequency/workaround/strength); repeat signals; 8–12 verbatim quotes in styled blockquotes, each labelled `[source] · [+/–/mixed] · [theme]`.
+**The Customer (03)** — unmet needs (titled blocks, ordered by strength, each with evidence/frequency/workaround/strength, sources linked); repeat signals (linked); 8–12 verbatim quotes in styled blockquotes, each labelled `[source name](URL) · [+/–/mixed] · [theme]` with the source as a clickable hyperlink.
 
 **The Product (04)** — flavour/variant winners and losers per brand (rating + volume where available), and requested-but-absent flavours/formats. If variant data wasn't separable, say so plainly.
 
@@ -94,9 +94,27 @@ The report must read like a strategy-firm deliverable — a crafted document, no
   --cover:#131C2E;   /* deep navy — verdict cover surface */
   --accent:#B7791F;  /* ochre — verdict + scorecard + key figures ONLY */
   --accent-soft:#F4EBD8;
+  --link:#1B2A4A;    /* hyperlink colour — same as brand for consistency */
+  --link-hover:#B7791F; /* hover state — ochre accent */
   --go:#2F7A4D; --conditional:#B7791F; --nogo:#A13434;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* Hyperlink styling — CRITICAL for source citations */
+#report a{
+  color:var(--link);
+  text-decoration:underline;
+  text-decoration-color:var(--line);
+  text-underline-offset:0.15em;
+  transition:color 0.15s, text-decoration-color 0.15s;
+}
+#report a:hover{
+  color:var(--link-hover);
+  text-decoration-color:var(--accent);
+}
+#report a:visited{
+  opacity:0.75;
 }
 ```
 
@@ -111,15 +129,22 @@ The report must read like a strategy-firm deliverable — a crafted document, no
 - **Section header pattern:** big `--brand` section number on the left, then a mono eyebrow + bold `<h2>` title, with a hairline rule underneath. This grid is what makes it read "designed."
 - **Verdict cover (00):** `--cover` deep-navy panel with a 3px ochre top-rule; mono "THE VERDICT" eyebrow; the verdict word in its semantic tint (go `#7FCB97` / conditional `#E8B864` / nogo `#E08A8A` on the dark cover); thesis; a hairline-divided "You asked" block (the word *you* in ochre italic); the scorecard; a "Data confidence" callout; and, for CONDITIONAL-GO, a numbered "Go if all three hold" gates list with ochre circular markers.
 - **Scorecard = 5-segment matrix (the signature element):** each dimension is one row — mono label · five small segment blocks (filled = ochre `#E8B864`, empty = faint) · the `N/5` value in mono. Two-column grid of six rows. Fill the first *score* segments; stagger their reveal on load (≈90ms each), respecting `prefers-reduced-motion`. This rating-matrix device is what reads "consultancy," not a progress bar.
-- **Competitor profiles = data-sheet, not prose:** a card per competitor with name + a mono "COMPETITOR · NAMED" tag, then `label : value` rows (Positioning, Price range, Strengths, Weaknesses, Distribution, Funding) on a 130px label column with hairline dividers. Verbatim phrases sit inline as small mono chips on `--accent-soft`.
-- **Tables:** mono uppercase headers with a 1.5px ink underline, subtle zebra rows (`--zebra` on even rows) and tight padding for scan-density, figures in `--mono` `--brand`. Used for the wider-field map and the flavour/variant table.
+- **Competitor profiles = data-sheet, not prose:** a card per competitor with name + a mono "COMPETITOR · NAMED" tag, then `label : value` rows (Positioning, Price range, Strengths, Weaknesses, Distribution, Funding) on a 130px label column with hairline dividers. Verbatim phrases sit inline as small mono chips on `--accent-soft`. **CRITICAL: Every source reference in the competitor profile must be a hyperlink.** Strengths/weaknesses should show inline linked sources like: `"finally a protein bar that doesn't taste like cardboard" — [Amazon.in](URL)`.
+- **Tables:** mono uppercase headers with a 1.5px ink underline, subtle zebra rows (`--zebra` on even rows) and tight padding for scan-density, figures in `--mono` `--brand`. **Platform names in the pricing table should be hyperlinked to the actual product listings.** Used for the pricing map and the flavour/variant table.
 - **Numbered steps (playbook, 90-days) — badge-anchored, never faint detached numbers.** Each step is a `grid` of `[number badge | body]`: a solid filled square badge (~1.7rem, white mono numeral) sits tight against a bold lead-in + description. Navy badges for the How-to-Win playbook, ochre badges for the 90-day action list to distinguish principle from action. Tight rows with light dividers — the number and its step must read as one unit.
-- **Customer voice — feature + dense card grid (do NOT use full-width floating quotes; they read as empty).** Lead with ONE feature pull-quote (the strongest demand signal) in a bordered card at ~1.3rem. Then a responsive **2-column grid of anchored quote cards** — each a white card with a coloured polarity tag (POSITIVE/MIXED/NEGATIVE), the quote, and a mono attribution pinned to the bottom. End with any brand-positioning lines as a "don't echo them" callout, not a quote. The grid fills the column width and gives the section rhythm; single full-width quotes leave dead space and look unfinished.
+- **Customer voice — feature + dense card grid (do NOT use full-width floating quotes; they read as empty).** Lead with ONE feature pull-quote (the strongest demand signal) in a bordered card at ~1.3rem. Then a responsive **2-column grid of anchored quote cards** — each a white card with a coloured polarity tag (POSITIVE/MIXED/NEGATIVE), the quote, and a **linked** mono attribution pinned to the bottom: format as `[Source Name · Context](URL)`. End with any brand-positioning lines as a "don't echo them" callout, not a quote. The grid fills the column width and gives the section rhythm; single full-width quotes leave dead space and look unfinished.
 - **Callouts:** white box, 3px ochre left border, mono eyebrow label — used for segment-gap, confidence notes, and the ambassador call. "The read" lines use a 2px solid ink top-rule instead, to mark a conclusion.
 - **Wedge cards & playbook:** wedge cards carry a strength chip (mono); the How-to-Win playbook and 90-day list use leading-zero mono counters (`01`,`02`…).
 
 ### Quality floor
 Responsive to mobile (rail → strip, grids → single column); visible focus rings (ochre); `prefers-reduced-motion` honoured; semantic `<h2>` per section; AA contrast.
+
+**Accessibility for hyperlinks:**
+- All source links must have meaningful link text (not "click here" or bare URLs)
+- Links must have visible underlines in the body text (design token: `text-underline-offset: 0.15em`)
+- Link colour must have sufficient contrast against background (AA standard)
+- `:focus` state must be clearly visible (ochre outline)
+- External links should open in the same tab (let founders control navigation)
 
 ### Behaviour (inline `<script>`, all scoped to `#report`)
 - `jumpTo(e,id)` — smooth-scroll to a section.
@@ -142,6 +167,9 @@ Responsive to mobile (rail → strip, grids → single column); visible focus ri
   #report .sc-seg i.on{ background:#000!important; }
   #report .gates li:before{ background:#000; color:#fff; }
   #report .callout.dark,#report .promptbox{ background:#f4f4f4!important; color:#000!important; }
+  /* hyperlinks in print — show URL after link text */
+  #report a{ color:#000; text-decoration:underline; }
+  #report a[href^="http"]:after{ content:" (" attr(href) ")"; font-size:9pt; color:#666; word-break:break-all; }
   /* each numbered section starts a fresh page; nothing splits mid-element */
   #report main>section{ break-before:page; }
   #report main>section:first-child{ break-before:avoid; }
@@ -151,17 +179,19 @@ Responsive to mobile (rail → strip, grids → single column); visible focus ri
 ```
 A `.pfoot` element (hidden on screen, shown in print, `position:fixed; bottom:6mm`) carries a mono confidential footer line. The scorecard matrix is deliberately built from boxes so it survives the colour-to-ink conversion — filled segments become solid black, empty become outlines.
 
+**CRITICAL for print: Hyperlinks display their full URL after the link text** using `a[href]:after{ content:" (" attr(href) ")" }` so founders can access sources from printed reports. This is essential for evidence verification.
+
 All CSS in one `<style>`, all JS in one `<script>`, both inline under `#report`. No external requests.
 
 ### Data-quality display conventions
 | Situation | Display |
 |---|---|
-| Strong data | Present confidently; cite source inline |
-| Partial (fallback used) | "(partial — search fallback)" after the source |
-| Source unavailable | Explicit note: "No data — [source] could not be accessed" + interpretation |
-| Conflicting sources | Show both: "Amazon reviews suggest X; Reddit suggests Y" |
-| <5 data points | "Limited data — fewer than 5 sources. Treat as directional." |
-| Market estimate | Always show figure + forecast window + source; conflicts as a range |
+| Strong data | Present confidently; cite source inline as hyperlink: `[source name](URL)` |
+| Partial (fallback used) | "(partial — [search fallback](search-URL))" with clickable search link |
+| Source unavailable | Explicit note: "No data — [source](attempted-URL) could not be accessed" + interpretation |
+| Conflicting sources | Show both with links: "[Amazon reviews](URL1) suggest X; [Reddit](URL2) suggests Y" |
+| <5 data points | "Limited data — fewer than 5 sources ([list](URLs)). Treat as directional." |
+| Market estimate | Always show figure + forecast window + linked source; conflicts as a range with both sources linked |
 
 ---
 

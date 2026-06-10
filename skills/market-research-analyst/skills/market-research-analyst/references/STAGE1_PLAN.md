@@ -109,6 +109,8 @@ If `manufacturing` is "own" or "contract" (not undecided), the make-vs-buy track
 
 Numbered list in chat. Be specific at every line — name what you are looking for. Group Part-A (customer & competition) and Part-B (strategic) so the founder sees both halves.
 
+**IMPORTANT: While presenting the plan, you don't need to include URLs yet (they'll be captured during extraction), but note that every finding will be linked to its source in the final report and progress updates.**
+
 ### Example — Full Launch Assessment, savoury protein snack
 
 ```
@@ -126,7 +128,7 @@ STRATEGIC PICTURE
 7. IndiaMART — contract manufacturers and indicative MOQ for protein bars/snacks
 8. Ambassador search — whether rivals use creators or celebrities, and organic creator coverage
 
-This builds toward a clear GO / NO-GO on a savoury protein snack under ₹100, with how-to-win and 90-day moves. Say "go" to start, or tell me what to add or change.
+This builds toward a clear GO / NO-GO on a savoury protein snack under ₹100, with how-to-win and 90-day moves. Every finding will be linked to its source so you can verify and explore. Say "go" to start, or tell me what to add or change.
 ```
 
 ### Bad plans avoid

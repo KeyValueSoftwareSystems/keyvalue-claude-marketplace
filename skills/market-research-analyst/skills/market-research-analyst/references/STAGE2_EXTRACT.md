@@ -22,15 +22,22 @@ For Reddit: `"[brand] site:reddit.com"`, then `"[brand] site:reddit.com/r/india"
 
 ### Progress notation (one line in chat after each source)
 
+**CRITICAL: Always include a clickable hyperlink to the source URL in every progress update.** Founders need to verify findings and explore sources themselves. Format: source name as markdown link, then the finding summary.
+
 ```
-🔍 Amazon.in (Yoga Bar) ✓ — 60+ reviews; sweetness complaint theme, chocolate flavour rated highest
-🔍 Reddit r/IndiaFitness ✓ — 11 threads; savoury gap mentioned repeatedly
-🔍 Healthkart ⚠ search fallback — ₹150/40g bar; peanut-butter top-rated flavour
-🔍 IBEF + news ✓ — protein market ~₹33,000 Cr, ~14% CAGR (IMARC, 2024–2030)
-🔍 Inc42 (competitors) ✓ — two rivals raised Series A in 2024
-🔍 IndiaMART ⚠ limited — co-packers exist, MOQ ~5,000 units quoted
-🔍 Ambassador search ✓ — rivals use micro-creators, no celebrity faces yet
+🔍 [Amazon.in (Yoga Bar)](https://amazon.in/s?k=yoga+bar) ✓ — 60+ reviews; sweetness complaint theme, chocolate flavour rated highest
+🔍 [Reddit r/IndiaFitness](https://reddit.com/r/IndiaFitness/search?q=protein+bar) ✓ — 11 threads; savoury gap mentioned repeatedly
+🔍 [Healthkart](https://www.google.com/search?q=yoga+bar+healthkart) ⚠ search fallback — ₹150/40g bar; peanut-butter top-rated flavour
+🔍 [IBEF protein market report](https://www.ibef.org) + [news](https://www.google.com/search?q=protein+market+India+CAGR) ✓ — protein market ~₹33,000 Cr, ~14% CAGR (IMARC, 2024–2030)
+🔍 [Inc42 (competitors)](https://inc42.com/buzz/search/?q=protein+bar+funding) ✓ — two rivals raised Series A in 2024
+🔍 [IndiaMART co-packers](https://www.indiamart.com/impcat/protein-bar-manufacturer.html) ⚠ limited — co-packers exist, MOQ ~5,000 units quoted
+🔍 [Ambassador search](https://www.google.com/search?q=protein+bar+brand+ambassador+India) ✓ — rivals use micro-creators, no celebrity faces yet
 ```
+
+**Link priority:**
+1. Direct page URL if fetched successfully
+2. Search URL used for fallback (show the actual search that yielded results)
+3. Domain homepage if specific page unavailable
 
 Notation: `✓` direct/good · `⚠ search fallback` blocked but useful · `⚠ limited data` thin · `✗ no usable data` nothing found.
 
@@ -50,6 +57,7 @@ Notation: `✓` direct/good · `⚠ search fallback` blocked but useful · `⚠ 
 - Switching to/from a named competitor
 - Return/refund mentions — strong dissatisfaction
 - The actual words customers use, not your summary
+- **The source URL** — capture and store the exact URL for every finding so it can be linked in the report
 
 **Thresholds:** 10+ reviews = representative; 5–10 = note the sample size; <5 = "limited data, directional only."
 **Recency:** prioritise 2024–2026. A complaint resolved in recent reviews is a positive signal — note it.
@@ -109,8 +117,10 @@ Always capture customer language verbatim. Never paraphrase what a customer said
 
 Why: founders put this language in their ads (your paraphrase is useless, their words are gold); verbatim quotes are evidence, summaries are interpretation; the Ad-Language section is worthless if everything is paraphrased.
 
-**Good:** `"finally a protein bar that doesn't taste like cardboard" — Amazon.in, 4★, Yoga Bar`
+**Good:** `"finally a protein bar that doesn't taste like cardboard" — [Amazon.in, 4★, Yoga Bar](https://amazon.in/product-page)`
 **Bad:** `Customers appreciate the taste.`
+
+**CRITICAL: Capture the source URL with every quote.** Format as: `"verbatim quote" — [source name, rating, brand](URL)`. The URL should go directly to the page where the quote was found (product page, Reddit thread, article), not just the homepage.
 
 Target 3–6 strong verbatim quotes per source. One strong, specific, surprising quote beats five generic ones.
 
@@ -131,15 +141,17 @@ Target 3–6 strong verbatim quotes per source. One strong, specific, surprising
 
 As you extract, sort findings into these buckets (internal scaffolding for Stage 3 — do not show the user):
 
-- **PRAISE** — what customers love (source, ideally verbatim)
-- **COMPLAINTS** — dislikes, gaps, frustrations (source)
-- **VERBATIM** — strong exact quotes (source, polarity, theme tag)
-- **PRICING** — exact price/size data (platform, date)
-- **FLAVOURS** — variant winners/losers (brand, source)
-- **MARKET** — size, CAGR, growth signals (source + window)
-- **FUNDING** — competitor raises and traction (source)
-- **MANUFACTURING** — MOQ, co-packer existence, make-vs-buy reference points
-- **AMBASSADOR** — competitor ambassador use + organic creator coverage
+- **PRAISE** — what customers love (source + URL, ideally verbatim)
+- **COMPLAINTS** — dislikes, gaps, frustrations (source + URL)
+- **VERBATIM** — strong exact quotes (source + URL, polarity, theme tag)
+- **PRICING** — exact price/size data (platform + URL, date)
+- **FLAVOURS** — variant winners/losers (brand, source + URL)
+- **MARKET** — size, CAGR, growth signals (source + URL + window)
+- **FUNDING** — competitor raises and traction (source + URL)
+- **MANUFACTURING** — MOQ, co-packer existence, make-vs-buy reference points (source + URL)
+- **AMBASSADOR** — competitor ambassador use + organic creator coverage (source + URL)
+
+**For EVERY item in EVERY bucket, capture the source URL.** Store it alongside the finding so it can be linked in the report. No floating assertions without a clickable source link.
 
 Keeping this structure during extraction means Stage 3 goes straight to synthesis and the verdict.
 

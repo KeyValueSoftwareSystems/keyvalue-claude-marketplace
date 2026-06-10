@@ -1,0 +1,237 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;color:#18181B;background:#F7F5F0;padding:1.5rem;max-width:700px;margin:0 auto}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px;color:#6B7280;margin-bottom:6px;display:block}
+.intro{font-size:14px;color:#52525B;margin-bottom:1.75rem;line-height:1.6}
+.sec{margin-bottom:1.5rem}
+.req{color:#ef4444;font-family:system-ui;text-transform:none;letter-spacing:0}
+.opt{font-family:system-ui;text-transform:none;letter-spacing:0;font-size:12px;color:#9CA3AF;margin-left:5px}
+.helper{font-size:13px;color:#71717A;margin-bottom:8px;line-height:1.4}
+input[type=text],select{width:100%;padding:10px 12px;border:1px solid #E4E0D7;border-radius:10px;font-size:15px;font-family:inherit;color:#18181B;background:#fff;outline:none}
+input[type=text]:focus,select:focus{border-color:#4338CA;box-shadow:0 0 0 3px rgba(67,56,202,.1)}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:540px){.mode-grid{grid-template-columns:1fr}}
+.mode-card{border:1.5px solid #E4E0D7;border-radius:10px;padding:14px;cursor:pointer;user-select:none;background:#fff}
+.mode-card.on{border-color:#4338CA;background:#EEF0FF}
+.mode-card h3{font-size:14px;font-weight:600;margin-bottom:4px;color:#18181B}
+.mode-card p{font-size:12px;color:#71717A;line-height:1.4}
+.mode-card.on h3{color:#3730A3}
+.mode-card.on p{color:#4338CA}
+.tag-wrap{border:1px solid #E4E0D7;border-radius:10px;padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px;min-height:44px;align-items:center;cursor:text;background:#fff}
+.tag-wrap:focus-within{border-color:#4338CA}
+.tag{background:#4338CA;color:#fff;font-size:13px;padding:4px 10px;border-radius:6px;display:flex;align-items:center;gap:5px}
+.tag button{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:15px;line-height:1;padding:0}
+.tag-wrap input{border:none;outline:none;font-size:14px;min-width:100px;flex:1;background:transparent;color:#18181B}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:6px 14px;border:1.5px solid #E4E0D7;border-radius:20px;font-size:13px;cursor:pointer;user-select:none;color:#52525B;background:#fff}
+.pill.on{background:#4338CA;color:#fff;border-color:#4338CA}
+.rpill{padding:6px 14px;border:1.5px solid #E4E0D7;border-radius:20px;font-size:13px;cursor:pointer;user-select:none;color:#52525B;background:#fff}
+.rpill.on{background:#EEF0FF;color:#3730A3;border-color:#4338CA;font-weight:500}
+.launch-box{border:1px solid #E4E0D7;border-radius:12px;padding:1.25rem;background:#fff}
+.launch-title{font-size:15px;font-weight:600;color:#18181B;margin-bottom:3px}
+.launch-sub{font-size:13px;color:#71717A;margin-bottom:1.25rem;line-height:1.4}
+.d-item{margin-bottom:1.25rem}
+.d-item:last-child{margin-bottom:0}
+.tracks-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.sel-all{font-size:13px;color:#4338CA;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.err{font-size:13px;color:#ef4444;margin-top:5px;display:none}
+#submit-btn{width:100%;padding:14px;background:#4338CA;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:4px}
+#submit-btn:disabled{opacity:.5;cursor:not-allowed}
+</style>
+
+<p class="intro">Let's set up your research. I've pre-filled what I caught — adjust anything and hit Start Research when ready.</p>
+
+<div class="sec">
+  <span class="mono">Research mode</span>
+  <div class="mode-grid">
+    <div class="mode-card" data-mode="Competitor Analysis" onclick="pickMode(this)">
+      <h3>Competitor Analysis</h3>
+      <p>Map competitors, pricing, and what customers say</p>
+    </div>
+    <div class="mode-card" data-mode="Product-Market Fit" onclick="pickMode(this)">
+      <h3>Product-Market Fit</h3>
+      <p>Find unmet needs, repeat-purchase signals, and gaps</p>
+    </div>
+    <div class="mode-card" data-mode="Full Launch Assessment" onclick="pickMode(this)">
+      <h3>Full Launch Assessment</h3>
+      <p>The full picture, ending in a GO / NO-GO verdict and how to win</p>
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <span class="mono">What are you building? <span class="req">*</span></span>
+  <input type="text" id="product" placeholder="e.g. high-protein savoury snack for Indian gym-goers, launching D2C">
+  <p class="err" id="product-err">Tell us what you're building — this shapes the entire research plan.</p>
+</div>
+
+<div class="sec">
+  <span class="mono">Target market</span>
+  <select id="market">
+    <option value="India">India</option>
+    <option value="Southeast Asia">Southeast Asia</option>
+    <option value="Global">Global</option>
+  </select>
+</div>
+
+<div class="sec">
+  <span class="mono">Competitors <span class="opt">Optional</span></span>
+  <p class="helper">Type a name and press Enter — leave blank and we'll surface them during research</p>
+  <div class="tag-wrap" onclick="document.getElementById('tag-in').focus()">
+    <div id="tag-list" style="display:contents"></div>
+    <input id="tag-in" type="text" placeholder="e.g. Darkins" onkeydown="onTagKey(event)">
+  </div>
+</div>
+
+<div class="sec">
+  <span class="mono">What matters most? <span class="opt">Optional — select any</span></span>
+  <p class="helper">Leave blank to cover all dimensions</p>
+  <div class="pills" id="focus-pills">
+    <span class="pill" onclick="this.classList.toggle('on')">Pricing &amp; pack sizes</span>
+    <span class="pill" onclick="this.classList.toggle('on')">Customer complaints</span>
+    <span class="pill" onclick="this.classList.toggle('on')">Repeat-purchase triggers</span>
+    <span class="pill" onclick="this.classList.toggle('on')">Ad language &amp; copy</span>
+    <span class="pill" onclick="this.classList.toggle('on')">Market gaps</span>
+    <span class="pill" onclick="this.classList.toggle('on')">Distribution channels</span>
+  </div>
+</div>
+
+<div id="launch-block" class="sec" style="display:none">
+  <div class="launch-box">
+    <div class="launch-title">Launch details</div>
+    <div class="launch-sub">Optional — the more you tell us, the sharper the verdict.</div>
+
+    <div class="d-item">
+      <span class="mono">Your stage</span>
+      <div class="pills" id="stage-pills">
+        <span class="rpill" onclick="pickR('stage-pills',this)">Just an idea</span>
+        <span class="rpill" onclick="pickR('stage-pills',this)">Pre-launch (building)</span>
+        <span class="rpill" onclick="pickR('stage-pills',this)">Launched (iterating)</span>
+      </div>
+    </div>
+
+    <div class="d-item">
+      <span class="mono">Target price <span class="opt">Optional</span></span>
+      <input type="text" id="price-in" placeholder="e.g. ₹99 for a 40g bar">
+    </div>
+
+    <div class="d-item">
+      <span class="mono">What's the decision you're trying to make? <span class="opt">Optional</span></span>
+      <input type="text" id="decision-in" placeholder="e.g. is there room for a savoury protein snack under ₹100?">
+    </div>
+
+    <div class="d-item">
+      <span class="mono">Manufacturing</span>
+      <div class="pills" id="mfg-pills">
+        <span class="rpill" onclick="pickR('mfg-pills',this)">Own plant</span>
+        <span class="rpill" onclick="pickR('mfg-pills',this)">Contract / co-packer</span>
+        <span class="rpill on" onclick="pickR('mfg-pills',this)">Undecided</span>
+      </div>
+    </div>
+
+    <div class="d-item">
+      <div class="tracks-row">
+        <span class="mono" style="margin-bottom:0">Go deeper on</span>
+        <button class="sel-all" id="sel-all-btn" onclick="toggleAll()">Deselect all</button>
+      </div>
+      <p class="helper">All selected by default — remove any you want to skip</p>
+      <div class="pills" id="track-pills">
+        <span class="pill on" onclick="toggleTrack(this)">Market size &amp; growth</span>
+        <span class="pill on" onclick="toggleTrack(this)">Funding &amp; competitor traction</span>
+        <span class="pill on" onclick="toggleTrack(this)">Flavours / variants that win</span>
+        <span class="pill on" onclick="toggleTrack(this)">Go-to-market plan</span>
+        <span class="pill on" onclick="toggleTrack(this)">Brand-ambassador call</span>
+        <span class="pill on" onclick="toggleTrack(this)">Make vs buy</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="submit-btn" onclick="doSubmit()">Start Research →</button>
+
+<script>
+const PRE_FILL={product:"",market:"India",competitors:[],mode:"Full Launch Assessment",price_point:"",decision:""};
+let tags=[...PRE_FILL.competitors],mode=PRE_FILL.mode;
+
+function init(){
+  document.getElementById('product').value=PRE_FILL.product;
+  document.getElementById('market').value=PRE_FILL.market;
+  document.getElementById('price-in').value=PRE_FILL.price_point||'';
+  document.getElementById('decision-in').value=PRE_FILL.decision||'';
+  tags.forEach(addTag);
+  const card=document.querySelector('[data-mode="'+mode+'"]');
+  if(card){card.classList.add('on');if(mode==='Full Launch Assessment')document.getElementById('launch-block').style.display='block';}
+}
+
+function pickMode(el){
+  document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');mode=el.dataset.mode;
+  document.getElementById('launch-block').style.display=mode==='Full Launch Assessment'?'block':'none';
+}
+
+function pickR(gid,el){
+  document.querySelectorAll('#'+gid+' .rpill').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+}
+
+function onTagKey(e){
+  if(e.key==='Enter'||e.key===','){
+    e.preventDefault();
+    const v=e.target.value.trim().replace(/,$/,'');
+    if(v){addTag(v);e.target.value='';}
+  }
+}
+function addTag(name){
+  if(!name||tags.includes(name))return;
+  tags.push(name);
+  const t=document.createElement('div');
+  t.className='tag';t.dataset.name=name;
+  t.innerHTML=name+'<button onclick="rmTag(\''+name+'\')" aria-label="Remove">×</button>';
+  document.getElementById('tag-list').appendChild(t);
+}
+function rmTag(name){
+  tags=tags.filter(t=>t!==name);
+  const el=document.querySelector('.tag[data-name="'+name+'"]');
+  if(el)el.remove();
+}
+
+function toggleTrack(el){
+  el.classList.toggle('on');
+  const allOn=[...document.querySelectorAll('#track-pills .pill')].every(p=>p.classList.contains('on'));
+  document.getElementById('sel-all-btn').textContent=allOn?'Deselect all':'Select all';
+}
+function toggleAll(){
+  const pills=document.querySelectorAll('#track-pills .pill');
+  const anyOff=[...pills].some(p=>!p.classList.contains('on'));
+  pills.forEach(p=>p.classList[anyOff?'add':'remove']('on'));
+  document.getElementById('sel-all-btn').textContent=anyOff?'Deselect all':'Select all';
+}
+
+function doSubmit(){
+  const product=document.getElementById('product').value.trim();
+  const errEl=document.getElementById('product-err');
+  if(!product){errEl.style.display='block';document.getElementById('product').focus();return;}
+  errEl.style.display='none';
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Setting up research…';
+  const isFull=mode==='Full Launch Assessment';
+  const focus=[...document.querySelectorAll('#focus-pills .pill.on')].map(p=>p.textContent).join(', ')||'all';
+  const stage=document.querySelector('#stage-pills .rpill.on')?.textContent||'not specified';
+  const mfg=document.querySelector('#mfg-pills .rpill.on')?.textContent||'undecided';
+  const tracks=[...document.querySelectorAll('#track-pills .pill.on')].map(p=>p.textContent).join(', ')||'all';
+  sendPrompt(`[RESEARCH_REQUEST]
+mode: ${mode}
+product: ${product}
+market: ${document.getElementById('market').value}
+competitors: ${tags.join(', ')||'none named'}
+focus: ${focus}
+stage: ${isFull?stage:'not specified'}
+price_point: ${isFull?(document.getElementById('price-in').value.trim()||'not specified'):'not specified'}
+decision: ${isFull?(document.getElementById('decision-in').value.trim()||'general assessment'):'general assessment'}
+manufacturing: ${isFull?mfg:'undecided'}
+tracks: ${isFull?tracks:'all'}
+[/RESEARCH_REQUEST]`);
+}
+
+init();
+</script>
