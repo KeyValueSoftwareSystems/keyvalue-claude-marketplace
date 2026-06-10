@@ -76,10 +76,15 @@ This skill is maintained at the KeyValue Claude Marketplace. To get the latest v
 Execute these steps in order. Do not stop to ask questions.
 
 ### Step 1 — Pull Data
-Call Meta Ads MCP. Get **campaign-level** data (not ad-level, not adset-level — campaigns only) for the last 7 days with these fields:
-`name, status, amount_spent, impressions, clicks, ctr, cpc, results, cost_per_result, created_time, start_time, actions`
+Call the Meta Ads MCP tool `ads_get_ad_entities` with these exact parameters:
+- `level`: `"campaign"` — this is critical, must be campaign not ad or adset
+- `date_preset`: `"last_7d"`
+- `fields`: `["name", "status", "amount_spent", "impressions", "clicks", "ctr", "cpc", "results", "cost_per_result", "created_time", "start_time", "actions"]`
+- `ad_account_id`: from context.md
 
-Filter to campaigns with non-zero spend. Sort by cost_per_result ascending.
+Filter to campaigns with non-zero `amount_spent`. Sort by `cost_per_result` ascending.
+
+If the tool returns CTR trends or ad-level data instead of spend/CPL — the level parameter was not applied correctly. Retry with `level: "campaign"` explicitly. Do not proceed with ad-level data.
 
 ### Step 2 — Calculate Key Numbers
 From the data compute:
@@ -128,7 +133,7 @@ _[date written as "5 Jun" format, not "5/6"] · [currency][CPL] CPL · [leads] l
 [Blank line between each campaign. If none: "No new ads this week."]
 
 🎯 *Opportunity Score: [score]/100*
-[Explain the top Meta recommendation in plain English — what it means and why it matters. Example: "Meta suggests consolidating overlapping ad sets — multiple ad sets targeting similar audiences compete against each other in the auction, driving up CPL. Merging them could lower CPL by 28%." If not available, omit this section entirely.]
+[Explain the top Meta recommendation in plain conversational English — no jargon. Write it as if explaining to a business owner who runs a school or studio and does not know ad tech. Bad example: "fragmented ad sets with overlapping audiences competing in the same auction." Good example: "You have multiple campaigns targeting similar schools in South India — they are bidding against each other which pushes up your costs. Merging them into one could lower your CPL by up to 28%." If not available, omit this section entirely.]
 
 Powered by Marketing Intelligence Agent 🤖
 ```
@@ -143,11 +148,11 @@ Powered by Marketing Intelligence Agent 🤖
 ## COMMAND: "run weekly report"
 
 ### Step 1 — Pull Data
-Pull two date ranges from Meta Ads MCP:
-- **This week**: last 7 days — `name, status, amount_spent, impressions, clicks, ctr, cpc, results, cost_per_result, created_time, start_time`
-- **Last week**: 8–14 days ago — same fields
+Call `ads_get_ad_entities` twice with `level: "campaign"` for two date ranges:
+- **This week**: `date_preset: "last_7d"` — fields: `name, status, amount_spent, impressions, clicks, ctr, cpc, results, cost_per_result, created_time, start_time, actions`
+- **Last week**: `time_range: {since: [8 days ago], until: [yesterday]}` — same fields
 
-Include both ACTIVE and PAUSED campaigns with spend > 0.
+Both calls must use `level: "campaign"`. Include both ACTIVE and PAUSED campaigns with spend > 0.
 
 ### Step 2 — Analyse
 Compute for this week:
@@ -207,7 +212,7 @@ Impressions: [count] → Clicks: [count] → Form Submissions: [count]
 3. [Recommendation with specific action]
 
 🎯 *Opportunity Score: [score]/100*
-[Explain the top Meta recommendation in plain English — what it means and why it matters. Example: "Meta suggests consolidating overlapping ad sets — multiple ad sets targeting similar audiences compete against each other in the auction, driving up CPL. Merging them could lower CPL by 28%." If not available, omit this section entirely.]
+[Explain the top Meta recommendation in plain conversational English — no jargon. Write it as if explaining to a business owner who runs a school or studio and does not know ad tech. Bad example: "fragmented ad sets with overlapping audiences competing in the same auction." Good example: "You have multiple campaigns targeting similar schools in South India — they are bidding against each other which pushes up your costs. Merging them into one could lower your CPL by up to 28%." If not available, omit this section entirely.]
 
 Powered by Marketing Intelligence Agent 🤖
 ```
