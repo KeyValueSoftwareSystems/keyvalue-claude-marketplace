@@ -38,6 +38,32 @@ input[type=text]:focus,select:focus{border-color:#4338CA;box-shadow:0 0 0 3px rg
 #submit-btn{width:100%;padding:14px;background:#4338CA;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .2s,box-shadow .2s;box-shadow:0 2px 4px rgba(67,56,202,.15)}
 #submit-btn:hover:not(:disabled){background:#3730A3;box-shadow:0 4px 8px rgba(67,56,202,.25)}
 #submit-btn:disabled{opacity:.5;cursor:not-allowed}
+@media(prefers-color-scheme:dark){
+body{background:#18181B;color:#E5E5E7}
+.mono{color:#9CA3AF}
+.intro{color:#A1A1AA}
+input[type=text],select{background:#27272A;border-color:#3F3F46;color:#E5E5E7}
+input[type=text]:focus,select:focus{border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.mode-card{background:#27272A;border-color:#3F3F46}
+.mode-card.on{background:#312E81;border-color:#6366F1}
+.mode-card h3{color:#E5E5E7}
+.mode-card p{color:#A1A1AA}
+.mode-card.on h3{color:#C7D2FE}
+.mode-card.on p{color:#A5B4FC}
+.tag-wrap{background:#27272A;border-color:#3F3F46}
+.tag-wrap input{color:#E5E5E7}
+.pill{background:#27272A;border-color:#3F3F46;color:#A1A1AA}
+.pill.on{background:#6366F1;border-color:#6366F1;color:#fff}
+.rpill{background:#27272A;border-color:#3F3F46;color:#A1A1AA}
+.rpill.on{background:#312E81;border-color:#6366F1;color:#C7D2FE}
+.launch-box{background:#27272A;border-color:#3F3F46}
+.launch-title{color:#E5E5E7}
+.launch-sub{color:#A1A1AA}
+.helper{color:#A1A1AA}
+.sel-all{color:#A5B4FC}
+#submit-btn{background:#6366F1;box-shadow:0 2px 4px rgba(99,102,241,.2)}
+#submit-btn:hover:not(:disabled){background:#4F46E5;box-shadow:0 4px 8px rgba(99,102,241,.3)}
+}
 </style>
 
 <p class="intro">Let's set up your research. I've pre-filled what I caught — adjust anything and hit Start Research when ready.</p>
